@@ -1042,7 +1042,10 @@ impl WindowsWindowInner {
             return None;
         }
         let new_display = WindowsDisplay::new_with_handle(new_monitor);
-        self.state.borrow_mut().display = new_display;
+        {
+            let mut lock = self.state.borrow_mut();
+            lock.display = new_display;
+        }
         Some(0)
     }
 
@@ -1303,19 +1306,26 @@ impl WindowsWindowInner {
         lparam: LPARAM,
     ) -> Option<isize> {
         if wparam.0 != 0 {
-            // 使用单次借用完成所有状态更新
+            // 先完成不会触发Windows API的状态更新
             let display = {
                 let mut lock = self.state.borrow_mut();
                 let display = lock.display;
                 lock.click_state.system_update(wparam.0);
                 lock.border_offset.update(handle).log_err();
-                log::debug!("handle_system_settings_changed: display={:?}", display);
-                lock.system_settings.update(display, wparam.0);
                 display
-            };
+            }; // 借用在这里被释放
+            
+            // 然后在没有借用的情况下调用可能触发Windows API的更新
+            // system_settings.update() 会调用 AutoHideTaskbarPosition::new()，
+            // 而这会调用 SHAppBarMessage，可能触发消息重入
+            {
+                let mut lock = self.state.borrow_mut();
+                lock.system_settings.update(display, wparam.0);
+            } // 确保借用被释放
         } else {
             self.handle_system_theme_changed(handle, lparam)?;
         };
+        
         // Force to trigger WM_NCCALCSIZE event to ensure that we handle auto hide
         // taskbar correctly.
         notify_frame_changed(handle);
