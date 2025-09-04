@@ -1,141 +1,466 @@
-   Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 29s
+PS C:\Users\mixbo\dev\ihavecoke\zed> cargo run 
+   Compiling gpui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui)
+   Compiling cli v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\cli)
+   Compiling zed v0.204.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\zed)
+warning: unused variable: `display`
+    --> crates\gpui\src\platform\windows\events.rs:1307:17
+     |
+1307 |             let display = {
+     |                 ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_display`
+     |
+     = note: `#[warn(unused_variables)]` on by default
+
+   Compiling release_channel v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\release_channel)
+   Compiling askpass v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\askpass)
+   Compiling zed_actions v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\zed_actions)
+   Compiling rpc v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\rpc)
+   Compiling fuzzy v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\fuzzy)
+   Compiling gpui_tokio v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui_tokio)
+   Compiling feature_flags v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\feature_flags)
+   Compiling menu v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\menu)
+   Compiling context_server v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\context_server)
+   Compiling assets v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assets)
+   Compiling command_palette_hooks v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\command_palette_hooks)
+   Compiling web_search v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\web_search)
+   Compiling jj v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\jj)
+   Compiling cloud_api_client v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\cloud_api_client)                   
+   Compiling git v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\git)                                             
+   Compiling lsp v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\lsp)                                             
+   Compiling credentials_provider v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\credentials_provider)
+   Compiling db v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\db)
+   Compiling task v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\task)                                           
+   Compiling session v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\session)                                     
+   Compiling fs v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\fs)                                               
+   Compiling settings v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\settings)
+   Compiling remote v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\remote)
+   Compiling theme v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\theme)
+   Compiling git_hosting_providers v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\git_hosting_providers)
+   Compiling audio v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\audio)
+   Compiling vim_mode_setting v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\vim_mode_setting)
+   Compiling zlog_settings v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\zlog_settings)
+   Compiling livekit_client v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\livekit_client)                       
+   Compiling language v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language)                                   
+   Compiling component v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\component)
+   Compiling terminal v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\terminal)
+   Compiling file_icons v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\file_icons)
+   Compiling ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\ui)
+warning: `gpui` (lib) generated 1 warning
+   Compiling worktree v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\worktree)
+   Compiling buffer_diff v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\buffer_diff)
+   Compiling prettier v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\prettier)
+   Compiling prompt_store v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\prompt_store)
+   Compiling markdown v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\markdown)                                   
+   Compiling rich_text v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\rich_text)
+   Compiling multi_buffer v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\multi_buffer)                           
+   Compiling client v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\client)                                       
+   Compiling dap v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\dap)                                             
+   Compiling language_model v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language_model)
+   Compiling channel v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\channel)
+   Compiling system_specs v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\system_specs)
+   Compiling crashes v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\crashes)
+   Compiling agent_settings v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\agent_settings)
+   Compiling ai_onboarding v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\ai_onboarding)
+   Compiling web_search_providers v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\web_search_providers)
+   Compiling extension v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\extension)
+   Compiling dap_adapters v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\dap_adapters)
+   Compiling snippet_provider v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\snippet_provider)                   
+   Compiling theme_extension v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\theme_extension)
+   Compiling debug_adapter_extension v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\debug_adapter_extension)     
+   Compiling project v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\project)                                     
+   Compiling call v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\call)                                           
+   Compiling edit_prediction v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\edit_prediction)
+   Compiling action_log v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\action_log)
+   Compiling extension_host v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\extension_host)
+   Compiling languages v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\languages)
+   Compiling language_extension v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language_extension)
+   Compiling supermaven v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\supermaven)                               
+   Compiling workspace v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\workspace)                                 
+   Compiling editor v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\editor)                                       
+   Compiling notifications v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\notifications)
+   Compiling assistant_slash_command v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assistant_slash_command)     
+   Compiling auto_update v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\auto_update)
+   Compiling copilot v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\copilot)
+   Compiling assistant_tool v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assistant_tool)
+   Compiling acp_tools v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\acp_tools)
+   Compiling feedback v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\feedback)
+   Compiling install_cli v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\install_cli)
+   Compiling ui_prompt v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\ui_prompt)
+   Compiling picker v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\picker)                                       
+   Compiling search v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\search)
+   Compiling ui_input v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\ui_input)
+   Compiling breadcrumbs v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\breadcrumbs)
+   Compiling assistant_slash_commands v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assistant_slash_commands)   
+   Compiling acp_thread v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\acp_thread)
+   Compiling panel v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\panel)
+   Compiling markdown_preview v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\markdown_preview)
+   Compiling zeta v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\zeta)
+   Compiling debugger_tools v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\debugger_tools)
+   Compiling go_to_line v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\go_to_line)
+   Compiling diagnostics v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\diagnostics)
+   Compiling journal v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\journal)
+   Compiling settings_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\settings_ui)
+   Compiling language_tools v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language_tools)
+   Compiling image_viewer v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\image_viewer)
+   Compiling inspector_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\inspector_ui)
+   Compiling activity_indicator v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\activity_indicator)
+   Compiling svg_preview v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\svg_preview)
+   Compiling language_models v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language_models)                     
+   Compiling command_palette v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\command_palette)
+   Compiling outline v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\outline)
+   Compiling git_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\git_ui)                                       
+   Compiling tasks_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\tasks_ui)
+   Compiling assistant_context v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assistant_context)                 
+   Compiling theme_selector v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\theme_selector)                       
+   Compiling project_symbols v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\project_symbols)                     
+   Compiling onboarding v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\onboarding)                               
+   Compiling tab_switcher v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\tab_switcher)                           
+   Compiling auto_update_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\auto_update_ui)                       
+   Compiling settings_profile_selector v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\settings_profile_selector) 
+   Compiling terminal_view v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\terminal_view)
+   Compiling file_finder v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\file_finder)
+   Compiling outline_panel v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\outline_panel)
+   Compiling edit_prediction_button v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\edit_prediction_button)       
+   Compiling toolchain_selector v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\toolchain_selector)
+   Compiling extensions_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\extensions_ui)                         
+   Compiling vim v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\vim)                                             
+   Compiling jj_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\jj_ui)                                         
+   Compiling agent v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\agent)                                         
+   Compiling agent_servers v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\agent_servers)                         
+   Compiling snippets_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\snippets_ui)                             
+   Compiling language_selector v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\language_selector)
+   Compiling recent_projects v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\recent_projects)
+   Compiling project_panel v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\project_panel)                         
+   Compiling assistant_tools v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\assistant_tools)                     
+   Compiling debugger_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\debugger_ui)
+   Compiling repl v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\repl)
+   Compiling agent2 v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\agent2)                                       
+   Compiling keymap_editor v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\keymap_editor)                         
+   Compiling title_bar v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\title_bar)                                 
+   Compiling rules_library v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\rules_library)
+   Compiling collab_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\collab_ui)
+   Compiling agent_ui v0.1.0 (C:\Users\mixbo\dev\ihavecoke\zed\crates\agent_ui)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 28s
      Running `target\debug\zed.exe`
-2025-09-04T22:17:55+08:00 INFO  [zed] ========== starting zed version 0.204.0, sha ebc22c2 ==========
-2025-09-04T22:17:55+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
-2025-09-04T22:17:55+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
-2025-09-04T22:17:55+08:00 INFO  [gpui::platform::windows::direct_write] Use Microsoft YaHei UI as UI font.
-2025-09-04T22:17:55+08:00 INFO  [zed] Using git binary path: None
-2025-09-04T22:17:55+08:00 WARN  [zed::reliability] Minidump endpoint not set
-2025-09-04T22:17:55+08:00 INFO  [extension_host] extensions updated. loading 6, reloading 0, unloading 0
-2025-09-04T22:17:55+08:00 INFO  [gpui::platform::windows::vsync] DirectComposition is supported for VSync, interval: 16.666ms
-2025-09-04T22:17:56+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
-2025-09-04T22:17:56+08:00 INFO  [client] set status on client 0: Authenticating
-2025-09-04T22:17:56+08:00 ERROR [worktree] 拒绝访问。 (os error 5)
-2025-09-04T22:17:56+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
-2025-09-04T22:17:56+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] Handling WM_CREATE: handle=HWND(0x206a6), hide_title_bar=true
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x206a6), lparam=0x2E0038 (x=56, y=46)
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(32px, 26.285715px), monitor_changed=false, duration=141.4µs
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5E50B28 (width=2856, height=1509)
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(2856 px (device), 1509 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1632px, 862.2857px) should_resize_renderer=true
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(2856 px (device), 1509 px (device)), should_resize_renderer=true, duration=3.401ms
-2025-09-04T22:17:56+08:00 DEBUG [gpui::platform::windows::events] WM_CREATE handled: frame_changed=true, result=0, duration=4.3558ms
-2025-09-04T22:17:56+08:00 INFO  [zed::zed] Using GPU: GpuSpecs { is_software_emulated: false, device_name: "NVIDIA GeForce RTX 4060 Ti", driver_name: "NVIDIA Corporation", driver_info: "560.94 r560_88" }
-2025-09-04T22:17:57+08:00 ERROR [project::git_store] failed to get working directory environment for repository "C:\\Users\\mixbo\\dev\\ihavecoke\\zed"
-2025-09-04T22:17:57+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
-2025-09-04T22:17:57+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFC7A0
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=117.4µs
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x206a6), lparam=0x2902D5 (x=725, y=41)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(414.2857px, 23.428572px), monitor_changed=false, duration=244.6µs
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360780 (width=1920, height=1334)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1920 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1097.1428px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1097.1428px, 762.2857px), scale_factor=1.75
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1920 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.9378ms
-2025-09-04T22:17:57+08:00 INFO  [gpui::platform::windows::directx_renderer] Updating polychrome_sprite_pipeline buffer size from 16 to 32
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=199µs
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360780 (width=1920, height=1334)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1920 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1097.1428px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1097.1428px, 762.2857px), scale_factor=1.75
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1920 px (device), 1334 px (device)), should_resize_renderer=true, duration=805.2µs
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x206a6), lparam=0x2902D5 (x=725, y=41)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(414.2857px, 23.428572px), monitor_changed=false, duration=133.7µs
-2025-09-04T22:17:57+08:00 INFO  [project::prettier_store] Initializing default prettier with plugins {}
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
-2025-09-04T22:17:57+08:00 INFO  [client] set status on client 141689: Authenticated
-2025-09-04T22:17:57+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
-2025-09-04T22:17:57+08:00 INFO  [node_runtime] using Node.js found on PATH: SystemNodeRuntime { node: "C:\\Program Files\\nodejs\\node.exe", npm: "C:\\Program Files\\nodejs\\npm.cmd", global_node_modules: "C:\\Users\\mixbo\\dev\\ihavecoke\\zed\\${APPDATA}\\npm\\node_modules\n", scratch_dir: "C:\\Users\\mixbo\\AppData\\Local\\Zed\\node" }
-2025-09-04T22:18:00+08:00 INFO  [project::prettier_store] Installing default prettier and plugins: [("prettier", "3.6.2")]
-2025-09-04T22:18:01+08:00 INFO  [lsp] starting language server process. binary path: "C:\\Program Files\\nodejs\\node.exe", working directory: "C:\\Users\\mixbo\\AppData\\Roaming\\Zed", args: ["C:\\Users\\mixbo\\AppData\\Local\\Zed\\languages\\json-language-server\\node_modules/vscode-langservers-extracted/bin/vscode-json-language-server", "--stdio"]
-2025-09-04T22:18:02+08:00 INFO  [project::prettier_store] Initialized default prettier with plugins: {}
-2025-09-04T22:18:02+08:00 INFO  [project::prettier_store] Initializing default prettier with plugins {}
-2025-09-04T22:18:20+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFC6E0
-2025-09-04T22:18:20+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=341.5µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=582.8µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x536077F (width=1919, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1919 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1096.5714px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1096.5714px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1919 px (device), 1334 px (device)), should_resize_renderer=true, duration=5.7351ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=507.1µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360769 (width=1897, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1897 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1084px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1084px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1897 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.958ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=101.5µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x536074B (width=1867, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1867 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1066.8572px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1066.8572px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1867 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.3699ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=199.7µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360731 (width=1841, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1841 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1052px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1052px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1841 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.2723ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=282.7µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x536071D (width=1821, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1821 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1040.5714px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1040.5714px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1821 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.4144ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=149.7µs
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360719 (width=1817, height=1334)
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1817 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1038.2858px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1038.2858px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1817 px (device), 1334 px (device)), should_resize_renderer=true, duration=1.3187ms
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFBB40
-2025-09-04T22:18:21+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=280.4µs
-2025-09-04T22:18:22+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
-2025-09-04T22:18:22+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=433.4µs
-2025-09-04T22:18:48+08:00 INFO  [gpui::platform::windows::events] System settings changed: devices
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1036 px (device), 761 px (device)), scale_factor=1.0, should_resize_renderer=true      
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1036px, 761px) should_resize_renderer=true
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1036px, 761px), scale_factor=1.0
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1036 px (device), 761 px (device)), should_resize_renderer=true, duration=2.7726ms
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED handled: new_dpi=96, new_scale_factor=1.0, is_maximized=false, duration=12.5083ms
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFD540
-2025-09-04T22:18:48+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(384, 254), scale_factor=1.0, duration=183.6µs
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] Handling WM_DPICHANGED: handle=HWND(0x206a6), new_dpi=168, rect=0xB717BFE0F0
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: handle=HWND(0x206a6), new_dpi=168, new_scale_factor=1.75, is_maximized=false
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: width=1841, height=1348
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xB717BFC390
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(646, 429), scale_factor=1.75, duration=178.9µs
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x206a6), lparam=0x2902D5 (x=725, y=41)
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(414.2857px, 23.428572px), monitor_changed=false, duration=2.5654ms
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5360719 (width=1817, height=1334)
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1817 px (device), 1334 px (device)), scale_factor=1.75, should_resize_renderer=true
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1038.2858px, 762.2857px) should_resize_renderer=true
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1038.2858px, 762.2857px), scale_factor=1.75
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1817 px (device), 1334 px (device)), should_resize_renderer=true, duration=4.6986ms
-2025-09-04T22:18:52+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED handled: new_dpi=168, new_scale_factor=1.75, is_maximized=false, duration=143.0643ms
-Thread "main" panicked with "RefCell already mutably borrowed" at crates\gpui\src\platform\windows\events.rs:1018:43
-https://github.com/zed-industries/zed/blob/ebc22c290bd0222261c7719dfc781ce5692060ca/crates\gpui\src\platform\windows\events.rs#L1018 (may not be uploaded, line may be incorrect if files modified)
+2025-09-04T23:29:27+08:00 INFO  [zed] ========== starting zed version 0.204.0, sha da53c6b ==========
+2025-09-04T23:29:27+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-04T23:29:27+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-04T23:29:27+08:00 INFO  [gpui::platform::windows::direct_write] Use Microsoft YaHei UI as UI font.
+2025-09-04T23:29:27+08:00 INFO  [zed] Using git binary path: None
+2025-09-04T23:29:27+08:00 WARN  [zed::reliability] Minidump endpoint not set
+2025-09-04T23:29:27+08:00 INFO  [extension_host] extensions updated. loading 6, reloading 0, unloading 0
+2025-09-04T23:29:27+08:00 INFO  [gpui::platform::windows::vsync] DirectComposition is supported for VSync, interval: 31.25ms
+2025-09-04T23:29:27+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:29:27+08:00 INFO  [client] set status on client 0: Authenticating
+2025-09-04T23:29:28+08:00 ERROR [worktree] 拒绝访问。 (os error 5)
+2025-09-04T23:29:28+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-04T23:29:28+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] Handling WM_CREATE: handle=HWND(0x301ba), hide_title_bar=true
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0x1B0022 (x=34, y=27)
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(34px, 27px), monitor_changed=false, duration=104.3µs
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x18802E4 (width=740, height=392)
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(740 px (device), 392 px (device)), scale_factor=1.0, should_resize_renderer=true
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(740px, 392px) should_resize_renderer=true
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(740 px (device), 392 px (device)), should_resize_renderer=true, duration=2.1522ms
+2025-09-04T23:29:28+08:00 DEBUG [gpui::platform::windows::events] WM_CREATE handled: frame_changed=true, result=0, duration=2.9665ms
+2025-09-04T23:29:28+08:00 INFO  [zed::zed] Using GPU: GpuSpecs { is_software_emulated: false, device_name: "NVIDIA GeForce RTX 4060 Ti", driver_name: "NVIDIA Corporation", driver_info: "560.94 r560_88" }
+2025-09-04T23:29:29+08:00 ERROR [project::git_store] failed to get working directory environment for repository "C:\\Users\\mixbo\\dev\\ihavecoke\\zed"
+2025-09-04T23:29:29+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:29:29+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FCB00
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=90.2µs
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0177 (x=375, y=15)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(375px, 15px), monitor_changed=false, duration=212.7µs
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x27E03F4 (width=1012, height=638)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1012 px (device), 638 px (device)), scale_factor=1.0, should_resize_renderer=true
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638px) should_resize_renderer=true
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638px), scale_factor=1.0
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1012 px (device), 638 px (device)), should_resize_renderer=true, duration=1.5202ms
+2025-09-04T23:29:29+08:00 INFO  [gpui::platform::windows::directx_renderer] Updating polychrome_sprite_pipeline buffer size from 16 to 32
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=416.5µs
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x27E03F4 (width=1012, height=638)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1012 px (device), 638 px (device)), scale_factor=1.0, should_resize_renderer=true
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638px) should_resize_renderer=true
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638px), scale_factor=1.0
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1012 px (device), 638 px (device)), should_resize_renderer=true, duration=676.5µs
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0177 (x=375, y=15)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(375px, 15px), monitor_changed=false, duration=179.4µs
+2025-09-04T23:29:29+08:00 INFO  [project::prettier_store] Initializing default prettier with plugins {}
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:29:29+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:29:29+08:00 INFO  [node_runtime] using Node.js found on PATH: SystemNodeRuntime { node: "C:\\Program Files\\nodejs\\node.exe", npm: "C:\\Program Files\\nodejs\\npm.cmd", global_node_modules: "C:\\Users\\mixbo\\dev\\ihavecoke\\zed\\${APPDATA}\\npm\\node_modules\n", scratch_dir: "C:\\Users\\mixbo\\AppData\\Local\\Zed\\node" }   
+2025-09-04T23:29:29+08:00 INFO  [client] set status on client 141689: Authenticated
+2025-09-04T23:29:31+08:00 INFO  [project::prettier_store] Installing default prettier and plugins: [("prettier", "3.6.2")]
+2025-09-04T23:29:31+08:00 INFO  [lsp] starting language server process. binary path: "C:\\Program Files\\nodejs\\node.exe", working directory: "C:\\Users\\mixbo\\AppData\\Roaming\\Zed", args: ["C:\\Users\\mixbo\\AppData\\Local\\Zed\\languages\\json-language-server\\node_modules/vscode-langservers-extracted/bin/vscode-json-language-server", "--stdio"]
+2025-09-04T23:29:33+08:00 INFO  [project::prettier_store] Initialized default prettier with plugins: {}
+2025-09-04T23:29:37+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
+2025-09-04T23:29:37+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=2.2613ms
+2025-09-04T23:29:40+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
+2025-09-04T23:29:40+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=252.5µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FCA40
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=596.4µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=119.7µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0111 (x=273, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(273px, 15px), monitor_changed=false, duration=139.2µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=205.7µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF00BF (x=191, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(191px, 15px), monitor_changed=false, duration=105.2µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=102.6µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0089 (x=137, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(137px, 15px), monitor_changed=false, duration=98.2µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=114.6µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0049 (x=73, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(73px, 15px), monitor_changed=false, duration=106.1µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=123.8µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0039 (x=57, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(57px, 15px), monitor_changed=false, duration=108µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=173.3µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF002B (x=43, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(43px, 15px), monitor_changed=false, duration=112.4µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=109.6µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF002A (x=42, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(42px, 15px), monitor_changed=false, duration=146.1µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xC671FBEA0
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=309.4µs
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0x301ba), lparam=0xF0029 (x=41, y=15)
+2025-09-04T23:29:41+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(41px, 15px), monitor_changed=false, duration=312.1µs
+2025-09-04T23:29:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1008 px (device), 579 px (device)), scale_factor=1.0, should_resize_renderer=true       
+2025-09-04T23:29:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1008px, 579px) should_resize_renderer=true
+2025-09-04T23:29:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1008px, 579px), scale_factor=1.0
+2025-09-04T23:29:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:29:43+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1008 px (device), 579 px (device)), should_resize_renderer=true, duration=1.3597ms
+2025-09-04T23:29:44+08:00 DEBUG [gpui::platform::windows::events] Handling WM_CLOSE
+2025-09-04T23:29:44+08:00 DEBUG [gpui::platform::windows::events] WM_CLOSE handled: should_close=false, result="Some(0)", duration=605.4µs
+2025-09-04T23:29:44+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
+2025-09-04T23:29:44+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=893µs
+2025-09-04T23:29:44+08:00 ERROR [gpui] window not found
+PS C:\Users\mixbo\dev\ihavecoke\zed> cargo run
+warning: unused variable: `display`
+    --> crates\gpui\src\platform\windows\events.rs:1307:17
+     |
+1307 |             let display = {
+     |                 ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_display`
+     |
+     = note: `#[warn(unused_variables)]` on by default
+
+warning: `gpui` (lib) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.47s
+     Running `target\debug\zed.exe`
+2025-09-04T23:30:03+08:00 INFO  [zed] ========== starting zed version 0.204.0, sha da53c6b ==========
+2025-09-04T23:30:03+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-04T23:30:03+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-04T23:30:03+08:00 INFO  [gpui::platform::windows::direct_write] Use Microsoft YaHei UI as UI font.
+2025-09-04T23:30:03+08:00 INFO  [zed] Using git binary path: None
+2025-09-04T23:30:03+08:00 WARN  [zed::reliability] Minidump endpoint not set
+2025-09-04T23:30:04+08:00 INFO  [extension_host] extensions updated. loading 6, reloading 0, unloading 0
+2025-09-04T23:30:04+08:00 INFO  [gpui::platform::windows::vsync] DirectComposition is supported for VSync, interval: 16.666ms
+2025-09-04T23:30:04+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:30:04+08:00 INFO  [client] set status on client 0: Authenticating
+2025-09-04T23:30:04+08:00 ERROR [worktree] 拒绝访问。 (os error 5)
+2025-09-04T23:30:04+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-04T23:30:04+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] Handling WM_CREATE: handle=HWND(0xa0196), hide_title_bar=true
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x860090 (x=144, y=134)
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(82.28571px, 76.57143px), monitor_changed=false, duration=127.4µs
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x5E50B28 (width=2856, height=1509)
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(2856 px (device), 1509 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1632px, 862.2857px) should_resize_renderer=true
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(2856 px (device), 1509 px (device)), should_resize_renderer=true, duration=1.612ms
+2025-09-04T23:30:04+08:00 DEBUG [gpui::platform::windows::events] WM_CREATE handled: frame_changed=true, result=0, duration=2.4052ms
+2025-09-04T23:30:04+08:00 INFO  [zed::zed] Using GPU: GpuSpecs { is_software_emulated: false, device_name: "NVIDIA GeForce RTX 4060 Ti", driver_name: "NVIDIA Corporation", driver_info: "560.94 r560_88" }
+2025-09-04T23:30:05+08:00 ERROR [project::git_store] failed to get working directory environment for repository "C:\\Users\\mixbo\\dev\\ihavecoke\\zed"
+2025-09-04T23:30:05+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:30:05+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFC740
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=120.8µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x1B0048 (x=72, y=27)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(41.142857px, 15.428572px), monitor_changed=false, duration=209µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x45D06EB (width=1771, height=1117)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1771 px (device), 1117 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638.2857px) should_resize_renderer=true
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638.2857px), scale_factor=1.75
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1771 px (device), 1117 px (device)), should_resize_renderer=true, duration=1.9192ms
+2025-09-04T23:30:05+08:00 INFO  [gpui::platform::windows::directx_renderer] Updating polychrome_sprite_pipeline buffer size from 16 to 32
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=630.7µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x45D06EB (width=1771, height=1117)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1771 px (device), 1117 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638.2857px) should_resize_renderer=true
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638.2857px), scale_factor=1.75
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1771 px (device), 1117 px (device)), should_resize_renderer=true, duration=707.9µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x1B0048 (x=72, y=27)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(41.142857px, 15.428572px), monitor_changed=false, duration=146.7µs
+2025-09-04T23:30:05+08:00 INFO  [project::prettier_store] Initializing default prettier with plugins {}
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFE080
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=168.1µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFD4E0
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=124.6µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x0 (x=0, y=0)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(0px, 0px), monitor_changed=false, duration=199.3µs
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x2 (size_type=SIZE_MAXIMIZED), lparam=0x81C0F00 (width=3840, height=2076)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(3840 px (device), 2076 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(2194.2856px, 1186.2858px) should_resize_renderer=true
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(2194.2856px, 1186.2858px), scale_factor=1.75
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(3840 px (device), 2076 px (device)), should_resize_renderer=true, duration=1.9502ms
+2025-09-04T23:30:05+08:00 INFO  [gpui::platform::windows::directx_renderer] Updating polychrome_sprite_pipeline buffer size from 32 to 64
+2025-09-04T23:30:05+08:00 INFO  [node_runtime] using Node.js found on PATH: SystemNodeRuntime { node: "C:\\Program Files\\nodejs\\node.exe", npm: "C:\\Program Files\\nodejs\\npm.cmd", global_node_modules: "C:\\Users\\mixbo\\dev\\ihavecoke\\zed\\${APPDATA}\\npm\\node_modules\n", scratch_dir: "C:\\Users\\mixbo\\AppData\\Local\\Zed\\node" }
+2025-09-04T23:30:05+08:00 INFO  [client] set status on client 141689: Authenticated
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:05+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:07+08:00 INFO  [lsp] starting language server process. binary path: "C:\\Program Files\\nodejs\\node.exe", working directory: "C:\\Users\\mixbo\\AppData\\Roaming\\Zed", args: ["C:\\Users\\mixbo\\AppData\\Local\\Zed\\languages\\json-language-server\\node_modules/vscode-langservers-extracted/bin/vscode-json-language-server", "--stdio"]
+2025-09-04T23:30:07+08:00 INFO  [project::prettier_store] Installing default prettier and plugins: [("prettier", "3.6.2")]
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFD4E0
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=216.4µs
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x1B0048 (x=72, y=27)
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(41.142857px, 15.428572px), monitor_changed=false, duration=233.4µs
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x45D06EB (width=1771, height=1117)
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1771 px (device), 1117 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638.2857px) should_resize_renderer=true
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638.2857px), scale_factor=1.75
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:07+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1771 px (device), 1117 px (device)), should_resize_renderer=true, duration=2.1131ms
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFC680
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=566.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=107.3µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x3400A4 (x=164, y=52)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(93.71429px, 29.714285px), monitor_changed=false, duration=138µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=106.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x4A0138 (x=312, y=74)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(178.28572px, 42.285713px), monitor_changed=false, duration=115.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=158.3µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x5A01DD (x=477, y=90)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(272.57144px, 51.42857px), monitor_changed=false, duration=140µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=100.6µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x620254 (x=596, y=98)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(340.57144px, 56px), monitor_changed=false, duration=104.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=205.9µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x660298 (x=664, y=102)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(379.42856px, 58.285713px), monitor_changed=false, duration=232.7µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=180.5µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6B02E7 (x=743, y=107)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(424.57144px, 61.142857px), monitor_changed=false, duration=172.3µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=161.3µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6D030D (x=781, y=109)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(446.2857px, 62.285713px), monitor_changed=false, duration=130.2µs
+2025-09-04T23:30:09+08:00 INFO  [project::prettier_store] Initialized default prettier with plugins: {}
+2025-09-04T23:30:09+08:00 INFO  [project::prettier_store] Initializing default prettier with plugins {}
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=80.7µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6D031B (x=795, y=109)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(454.2857px, 62.285713px), monitor_changed=false, duration=126.5µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=113.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6C031F (x=799, y=108)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(456.57144px, 61.714287px), monitor_changed=false, duration=108µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=112µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6B031F (x=799, y=107)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(456.57144px, 61.142857px), monitor_changed=false, duration=101.8µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=145.8µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6B0320 (x=800, y=107)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(457.14285px, 61.142857px), monitor_changed=false, duration=156.2µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=107µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6B0321 (x=801, y=107)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(457.7143px, 61.142857px), monitor_changed=false, duration=166µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=110.6µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6B0327 (x=807, y=107)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(461.14285px, 61.142857px), monitor_changed=false, duration=100.9µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=145.5µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6D0333 (x=819, y=109)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(468px, 62.285713px), monitor_changed=false, duration=178.6µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=114.1µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6E033D (x=829, y=110)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(473.7143px, 62.857143px), monitor_changed=false, duration=97.9µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=113.5µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6E0344 (x=836, y=110)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(477.7143px, 62.857143px), monitor_changed=false, duration=92.3µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFBAE0
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(654, 434), scale_factor=1.75, duration=108.2µs
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6E0345 (x=837, y=110)
+2025-09-04T23:30:09+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(478.2857px, 62.857143px), monitor_changed=false, duration=129.1µs
+2025-09-04T23:30:17+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
+2025-09-04T23:30:17+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=432.6µs
+2025-09-04T23:30:18+08:00 INFO  [gpui::platform::windows::events] System settings changed: devices
+2025-09-04T23:30:18+08:00 INFO  [gpui::platform::windows::events] System settings changed: windows
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_DPICHANGED: handle=HWND(0xa0196), new_dpi=96, rect=0xA3EFBFE090
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: handle=HWND(0xa0196), new_dpi=96, new_scale_factor=1.0, is_maximized=false
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: width=1026, height=646
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFC330
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(384, 254), scale_factor=1.0, duration=173.1µs
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x31014A (x=330, y=49)
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(330px, 49px), monitor_changed=false, duration=1.7967ms
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x27D03F2 (width=1010, height=637)
+true
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1010px, 637px) should_resize_renderer=true
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1010px, 637px), scale_factor=1.0
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1010 px (device), 637 px (device)), should_resize_renderer=true, duration=2.0738ms
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED handled: new_dpi=96, new_scale_factor=1.0, is_maximized=false, duration=34.1188ms
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] handle_system_settings_changed: display=WindowsDisplay { handle: HMONITOR(0x10001), display_id: DisplayId(0), scale_factor: 1.75, bounds: Bounds { origin: Point { x: 0px, y: 0px }, size: Size { 2194.2856px × 1234.2858px } }, physical_bounds: Bounds { origin: Point { x: 0 px (device), y: 0 px (device) }, size: Size { 3840 px (device) × 2160 px (device) } }, uuid: 78692035-3a04-52f3-a2bf-1133155ae828 }
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=1.3827ms
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFD4E0
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=201.8µs
+2025-09-04T23:30:18+08:00 DEBUG [gpui::platform::windows::events] handle_system_settings_changed: display=WindowsDisplay { handle: HMONITOR(0x10001), display_id: DisplayId(0), scale_factor: 1.75, bounds: Bounds { origin: Point { x: 0px, y: 0px }, size: Size { 2194.2856px × 1234.2858px } }, physical_bounds: Bounds { origin: Point { x: 0 px (device), y: 0 px (device) }, size: Size { 3840 px (device) × 2160 px (device) } }, uuid: 78692035-3a04-52f3-a2bf-1133155ae828 }
+2025-09-04T23:30:19+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFD4E0
+2025-09-04T23:30:19+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(376, 249), scale_factor=1.0, duration=158.8µs
+2025-09-04T23:30:25+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
+2025-09-04T23:30:25+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=2.6339ms
+2025-09-04T23:30:26+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x1, activated=true
+2025-09-04T23:30:26+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=true, duration=176.3µs
+2025-09-04T23:30:28+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:28+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:35+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-04T23:30:38+08:00 DEBUG [gpui::platform::windows::events] Handling WM_ACTIVATE: wparam=0x0, activated=false
+2025-09-04T23:30:38+08:00 DEBUG [gpui::platform::windows::events] WM_ACTIVATE handled: activated=false, duration=649.8µs
+2025-09-04T23:30:41+08:00 INFO  [lsp] starting language server process. binary path: "C:\\Users\\mixbo\\AppData\\Local\\Zed\\extensions\\work\\toml\\taplo-0.10.0\\taplo.exe", working directory: "C:\\Users\\mixbo\\dev\\ihavecoke\\zed", args: ["lsp", "stdio"]
+2025-09-04T23:30:41+08:00 ERROR [lsp] Shutdown request failure, server taplo (id 2): Server not initialized
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] Handling WM_DPICHANGED: handle=HWND(0xa0196), new_dpi=168, rect=0xA3EFBFE090
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: handle=HWND(0xa0196), new_dpi=168, new_scale_factor=1.75, is_maximized=false
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED: width=1795, height=1131
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] Handling WM_GETMINMAXINFO: lparam=0xA3EFBFC330
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_GETMINMAXINFO handled: min_size=(646, 429), scale_factor=1.75, duration=145.3µs
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] Handling WM_MOVE: handle=HWND(0xa0196), lparam=0x6E0345 (x=837, y=110)
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_MOVE handled: new_origin=(478.2857px, 62.857143px), monitor_changed=false, duration=1.8974ms
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] Handling WM_SIZE: wparam=0x0 (size_type=SIZE_RESTORED), lparam=0x45D06EB (width=1771, height=1117)
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=(1771 px (device), 1117 px (device)), scale_factor=1.75, should_resize_renderer=true     
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=(1012px, 638.2857px) should_resize_renderer=true
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: calling resize callback with new_logical_size=(1012px, 638.2857px), scale_factor=1.75
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: done
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_SIZE handled: new_size=(1771 px (device), 1117 px (device)), should_resize_renderer=true, duration=4.9439ms
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] WM_DPICHANGED handled: new_dpi=168, new_scale_factor=1.75, is_maximized=false, duration=168.237ms
+2025-09-04T23:30:43+08:00 DEBUG [gpui::platform::windows::events] handle_system_settings_changed: display=WindowsDisplay { handle: HMONITOR(0x10001), display_id: DisplayId(0), scale_factor: 1.75, bounds: Bounds { origin: Point { x: 0px, y: 0px }, size: Size { 2194.2856px × 1234.2858px } }, physical_bounds: Bounds { origin: Point { x: 0 px (device), y: 0 px (device) }, size: Size { 3840 px (device) × 2160 px (device) } }, uuid: 78692035-3a04-52f3-a2bf-1133155ae828 }
+Thread "main" panicked with "RefCell already mutably borrowed" at crates\gpui\src\platform\windows\events.rs:1024:35
+https://github.com/zed-industries/zed/blob/da53c6bfa345607513c66eba0d27a8e2ff3a6fdb/crates\gpui\src\platform\windows\events.rs#L1024 (may not be uploaded, line may be incorrect if files modified)
    0: backtrace::backtrace::dbghelp64::trace
              at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\backtrace\dbghelp64.rs:91
       backtrace::backtrace::trace_unsynchronized<backtrace::capture::impl$4::create::closure_env$0>
@@ -163,7 +488,7 @@ https://github.com/zed-industries/zed/blob/ebc22c290bd0222261c7719dfc781ce569206
   11: core::cell::RefCell<gpui::platform::windows::window::WindowsWindowState>::borrow<gpui::platform::windows::window::WindowsWindowState>
              at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\core\src\cell.rs:981
   12: gpui::platform::windows::window::WindowsWindowInner::handle_display_change_msg
-             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:1018
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:1024
   13: gpui::platform::windows::window::WindowsWindowInner::handle_msg
              at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:62
   14: gpui::platform::windows::window::window_procedure
@@ -188,7 +513,7 @@ https://github.com/zed-industries/zed/blob/ebc22c290bd0222261c7719dfc781ce569206
   28: gpui::platform::windows::system_settings::WindowsSystemSettings::update
              at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\system_settings.rs:47
   29: gpui::platform::windows::window::WindowsWindowInner::handle_system_settings_changed
-             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:1299
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:1313
   30: gpui::platform::windows::window::WindowsWindowInner::handle_msg
              at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:112
   31: gpui::platform::windows::window::window_procedure
@@ -236,4 +561,3 @@ https://github.com/zed-industries/zed/blob/ebc22c290bd0222261c7719dfc781ce569206
              at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
   50: BaseThreadInitThunk
   51: RtlUserThreadStart
-
