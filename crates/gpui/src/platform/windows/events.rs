@@ -37,6 +37,83 @@ impl WindowsWindowInner {
         wparam: WPARAM,
         lparam: LPARAM,
     ) -> LRESULT {
+        // Filter out noisy messages that occur frequently
+        let is_noisy_message = matches!(msg,
+            WM_SETCURSOR | WM_NCHITTEST | WM_PAINT | WM_MOUSEMOVE | 
+            WM_NCMOUSEMOVE | WM_MOUSELEAVE | WM_NCMOUSELEAVE
+        );
+        
+        // Log important messages only
+        if !is_noisy_message {
+            log::info!(
+                "WinEvent: handle={:?}, msg=0x{:X} ({}), wparam={:?}, lparam={:?}, time={}",
+                handle,
+                msg,
+                match msg {
+                WM_ACTIVATE => "WM_ACTIVATE",
+                WM_CREATE => "WM_CREATE",
+                WM_DEVICECHANGE => "WM_DEVICECHANGE",
+                WM_MOVE => "WM_MOVE",
+                WM_SIZE => "WM_SIZE",
+                WM_GETMINMAXINFO => "WM_GETMINMAXINFO",
+                WM_ENTERSIZEMOVE => "WM_ENTERSIZEMOVE",
+                WM_ENTERMENULOOP => "WM_ENTERMENULOOP",
+                WM_EXITSIZEMOVE => "WM_EXITSIZEMOVE",
+                WM_EXITMENULOOP => "WM_EXITMENULOOP",
+                WM_TIMER => "WM_TIMER",
+                WM_NCCALCSIZE => "WM_NCCALCSIZE",
+                WM_DPICHANGED => "WM_DPICHANGED",
+                WM_DISPLAYCHANGE => "WM_DISPLAYCHANGE",
+                WM_NCHITTEST => "WM_NCHITTEST",
+                WM_PAINT => "WM_PAINT",
+                WM_CLOSE => "WM_CLOSE",
+                WM_DESTROY => "WM_DESTROY",
+                WM_MOUSEMOVE => "WM_MOUSEMOVE",
+                WM_MOUSELEAVE => "WM_MOUSELEAVE",
+                WM_NCMOUSELEAVE => "WM_NCMOUSELEAVE",
+                WM_NCMOUSEMOVE => "WM_NCMOUSEMOVE",
+                WM_NCLBUTTONDOWN => "WM_NCLBUTTONDOWN",
+                WM_NCRBUTTONDOWN => "WM_NCRBUTTONDOWN",
+                WM_NCMBUTTONDOWN => "WM_NCMBUTTONDOWN",
+                WM_NCLBUTTONUP => "WM_NCLBUTTONUP",
+                WM_NCRBUTTONUP => "WM_NCRBUTTONUP",
+                WM_NCMBUTTONUP => "WM_NCMBUTTONUP",
+                WM_LBUTTONDOWN => "WM_LBUTTONDOWN",
+                WM_RBUTTONDOWN => "WM_RBUTTONDOWN",
+                WM_MBUTTONDOWN => "WM_MBUTTONDOWN",
+                WM_XBUTTONDOWN => "WM_XBUTTONDOWN",
+                WM_LBUTTONUP => "WM_LBUTTONUP",
+                WM_RBUTTONUP => "WM_RBUTTONUP",
+                WM_MBUTTONUP => "WM_MBUTTONUP",
+                WM_XBUTTONUP => "WM_XBUTTONUP",
+                WM_MOUSEWHEEL => "WM_MOUSEWHEEL",
+                WM_MOUSEHWHEEL => "WM_MOUSEHWHEEL",
+                WM_SYSKEYDOWN => "WM_SYSKEYDOWN",
+                WM_SYSKEYUP => "WM_SYSKEYUP",
+                WM_SYSCOMMAND => "WM_SYSCOMMAND",
+                WM_KEYDOWN => "WM_KEYDOWN",
+                WM_KEYUP => "WM_KEYUP",
+                WM_CHAR => "WM_CHAR",
+                WM_DEADCHAR => "WM_DEADCHAR",
+                WM_IME_STARTCOMPOSITION => "WM_IME_STARTCOMPOSITION",
+                WM_IME_COMPOSITION => "WM_IME_COMPOSITION",
+                WM_SETCURSOR => "WM_SETCURSOR",
+                WM_SETTINGCHANGE => "WM_SETTINGCHANGE",
+                WM_INPUTLANGCHANGE => "WM_INPUTLANGCHANGE",
+                WM_SHOWWINDOW => "WM_SHOWWINDOW",
+                v if v == WM_GPUI_CURSOR_STYLE_CHANGED => "WM_GPUI_CURSOR_STYLE_CHANGED",
+                v if v == WM_GPUI_FORCE_UPDATE_WINDOW => "WM_GPUI_FORCE_UPDATE_WINDOW",
+                _ => "UNKNOWN",
+            },
+            wparam,
+            lparam,
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_millis()
+        );
+        }
+
         let handled = match msg {
             WM_ACTIVATE => self.handle_activate_msg(wparam),
             WM_CREATE => self.handle_create_msg(handle),
@@ -107,13 +184,18 @@ impl WindowsWindowInner {
             _ => None,
         };
         if let Some(n) = handled {
+            log::trace!("handle_msg result: LRESULT({}) for msg 0x{:X}", n, msg);
             LRESULT(n)
         } else {
+            log::trace!("handle_msg: delegating to DefWindowProcW for msg 0x{:X}", msg);
             unsafe { DefWindowProcW(handle, msg, wparam, lparam) }
         }
     }
 
     fn handle_move_msg(&self, handle: HWND, lparam: LPARAM) -> Option<isize> {
+        let _x = lparam.signed_loword() as f32;
+        let _y = lparam.signed_hiword() as f32;
+
         let mut lock = self.state.borrow_mut();
         let origin = logical_point(
             lparam.signed_loword() as f32,
@@ -135,6 +217,8 @@ impl WindowsWindowInner {
             // minimize the window can trigger this event too, in this case,
             // monitor is invalid, we do nothing.
             if !monitor.is_invalid() && lock.display.handle != monitor {
+                log::debug!("handle_move_msg: window moved to different monitor, old={:?}, new={:?}", 
+                           lock.display.handle, monitor);
                 // we will get the same monitor if we only have one
                 lock.display = WindowsDisplay::new_with_handle(monitor);
             }
@@ -148,10 +232,13 @@ impl WindowsWindowInner {
     }
 
     fn handle_get_min_max_info_msg(&self, lparam: LPARAM) -> Option<isize> {
+        log::debug!("handle_get_min_max_info_msg: lparam={:?}", lparam);
         let lock = self.state.borrow();
         let min_size = lock.min_size?;
         let scale_factor = lock.scale_factor;
         let boarder_offset = lock.border_offset;
+        log::debug!("handle_get_min_max_info_msg: min_size={:?}, scale_factor={}, border_offset={:?}", 
+                   min_size, scale_factor, boarder_offset);
         drop(lock);
         unsafe {
             let minmax_info = &mut *(lparam.0 as *mut MINMAXINFO);
@@ -159,16 +246,33 @@ impl WindowsWindowInner {
                 min_size.width.scale(scale_factor).0 as i32 + boarder_offset.width_offset;
             minmax_info.ptMinTrackSize.y =
                 min_size.height.scale(scale_factor).0 as i32 + boarder_offset.height_offset;
+            log::debug!("handle_get_min_max_info_msg: set ptMinTrackSize=({}, {})", 
+                       minmax_info.ptMinTrackSize.x, minmax_info.ptMinTrackSize.y);
         }
         Some(0)
     }
 
     fn handle_size_msg(&self, wparam: WPARAM, lparam: LPARAM) -> Option<isize> {
+        let width = lparam.loword().max(1) as i32;
+        let height = lparam.hiword().max(1) as i32;
+        log::debug!("handle_size_msg: wparam={:?} ({}), lparam={:?}, width={}, height={}", 
+                   wparam, 
+                   match wparam.0 as u32 {
+                       0 => "SIZE_RESTORED",
+                       1 => "SIZE_MINIMIZED",
+                       2 => "SIZE_MAXIMIZED", 
+                       3 => "SIZE_MAXSHOW",
+                       4 => "SIZE_MAXHIDE",
+                       _ => "UNKNOWN",
+                   },
+                   lparam, width, height);
+
         let mut lock = self.state.borrow_mut();
 
         // Don't resize the renderer when the window is minimized, but record that it was minimized so
         // that on restore the swap chain can be recreated via `update_drawable_size_even_if_unchanged`.
-        if wparam.0 == SIZE_MINIMIZED as usize {
+        if wparam.0 == 1 /* SIZE_MINIMIZED */ {
+            log::debug!("handle_size_msg: window minimized, saving request_frame callback");
             lock.restore_from_minimized = lock.callbacks.request_frame.take();
             return Some(0);
         }
@@ -180,10 +284,13 @@ impl WindowsWindowInner {
         let scale_factor = lock.scale_factor;
         let mut should_resize_renderer = false;
         if lock.restore_from_minimized.is_some() {
+            log::debug!("handle_size_msg: restoring from minimized state");
             lock.callbacks.request_frame = lock.restore_from_minimized.take();
         } else {
             should_resize_renderer = true;
         }
+        log::debug!("handle_size_msg: new_size={:?}, scale_factor={}, should_resize_renderer={}", 
+                   new_size, scale_factor, should_resize_renderer);
         drop(lock);
 
         self.handle_size_change(new_size, scale_factor, should_resize_renderer);
@@ -196,13 +303,18 @@ impl WindowsWindowInner {
         scale_factor: f32,
         should_resize_renderer: bool,
     ) {
+        log::debug!("handle_size_change: device_size={:?}, scale_factor={}, should_resize_renderer={}", 
+                   device_size, scale_factor, should_resize_renderer);
         let new_logical_size = device_size.to_pixels(scale_factor);
+        log::debug!("handle_size_change: new_logical_size={:?}", new_logical_size);
         let mut lock = self.state.borrow_mut();
         lock.logical_size = new_logical_size;
         if should_resize_renderer {
+            log::debug!("handle_size_change: resizing renderer");
             lock.renderer.resize(device_size).log_err();
         }
         if let Some(mut callback) = lock.callbacks.resize.take() {
+            log::debug!("handle_size_change: executing resize callback");
             drop(lock);
             callback(new_logical_size, scale_factor);
             self.state.borrow_mut().callbacks.resize = Some(callback);
@@ -210,6 +322,7 @@ impl WindowsWindowInner {
     }
 
     fn handle_size_move_loop(&self, handle: HWND) -> Option<isize> {
+        log::debug!("handle_size_move_loop: starting timer for handle={:?}", handle);
         unsafe {
             let ret = SetTimer(
                 Some(handle),
@@ -219,15 +332,18 @@ impl WindowsWindowInner {
             );
             if ret == 0 {
                 log::error!(
-                    "unable to create timer: {}",
+                    "handle_size_move_loop: unable to create timer: {}",
                     std::io::Error::last_os_error()
                 );
+            } else {
+                log::debug!("handle_size_move_loop: timer created successfully, ret={}", ret);
             }
         }
         None
     }
 
     fn handle_size_move_loop_exit(&self, handle: HWND) -> Option<isize> {
+        log::debug!("handle_size_move_loop_exit: stopping timer for handle={:?}", handle);
         unsafe {
             KillTimer(Some(handle), SIZE_MOVE_LOOP_TIMER_ID).log_err();
         }
@@ -235,12 +351,16 @@ impl WindowsWindowInner {
     }
 
     fn handle_timer_msg(&self, handle: HWND, wparam: WPARAM) -> Option<isize> {
+        log::debug!("handle_timer_msg: handle={:?}, wparam={:?}", handle, wparam);
         if wparam.0 == SIZE_MOVE_LOOP_TIMER_ID {
+            let runnable_count = self.main_receiver.len();
+            log::debug!("handle_timer_msg: processing {} runnables during size/move loop", runnable_count);
             for runnable in self.main_receiver.drain() {
                 runnable.run();
             }
             self.handle_paint_msg(handle)
         } else {
+            log::debug!("handle_timer_msg: unknown timer ID {}", wparam.0);
             None
         }
     }
@@ -250,20 +370,31 @@ impl WindowsWindowInner {
     }
 
     fn handle_close_msg(&self) -> Option<isize> {
+        log::debug!("handle_close_msg: checking should_close callback");
         let mut callback = self.state.borrow_mut().callbacks.should_close.take()?;
         let should_close = callback();
+        log::debug!("handle_close_msg: should_close={}", should_close);
         self.state.borrow_mut().callbacks.should_close = Some(callback);
-        if should_close { None } else { Some(0) }
+        if should_close { 
+            log::debug!("handle_close_msg: allowing window to close");
+            None 
+        } else { 
+            log::debug!("handle_close_msg: preventing window close");
+            Some(0) 
+        }
     }
 
     fn handle_destroy_msg(&self, handle: HWND) -> Option<isize> {
+        log::debug!("handle_destroy_msg: handle={:?}", handle);
         let callback = {
             let mut lock = self.state.borrow_mut();
             lock.callbacks.close.take()
         };
         if let Some(callback) = callback {
+            log::debug!("handle_destroy_msg: executing close callback");
             callback();
         }
+        log::debug!("handle_destroy_msg: posting WM_GPUI_CLOSE_ONE_WINDOW message");
         unsafe {
             PostMessageW(
                 Some(self.platform_window_handle),
@@ -277,6 +408,10 @@ impl WindowsWindowInner {
     }
 
     fn handle_mouse_move_msg(&self, handle: HWND, lparam: LPARAM, wparam: WPARAM) -> Option<isize> {
+        let _x = lparam.signed_loword() as f32;
+        let _y = lparam.signed_hiword() as f32;
+        let _pressed_button_flags = MODIFIERKEYS_FLAGS(wparam.loword() as u32);
+        
         self.start_tracking_mouse(handle, TME_LEAVE);
 
         let mut lock = self.state.borrow_mut();
@@ -298,10 +433,10 @@ impl WindowsWindowInner {
             }
             _ => None,
         };
-        let x = lparam.signed_loword() as f32;
-        let y = lparam.signed_hiword() as f32;
+        let _x = lparam.signed_loword() as f32;
+        let _y = lparam.signed_hiword() as f32;
         let input = PlatformInput::MouseMove(MouseMoveEvent {
-            position: logical_point(x, y, scale_factor),
+            position: logical_point(_x, _y, scale_factor),
             pressed_button,
             modifiers: current_modifiers(),
         });
@@ -444,16 +579,20 @@ impl WindowsWindowInner {
         button: MouseButton,
         lparam: LPARAM,
     ) -> Option<isize> {
+        let x = lparam.signed_loword();
+        let y = lparam.signed_hiword();
+        log::debug!("handle_mouse_down_msg: handle={:?}, button={:?}, x={}, y={}", 
+                   handle, button, x, y);
+        
         unsafe { SetCapture(handle) };
         let mut lock = self.state.borrow_mut();
         let Some(mut func) = lock.callbacks.input.take() else {
             return Some(1);
         };
-        let x = lparam.signed_loword();
-        let y = lparam.signed_hiword();
         let physical_point = point(DevicePixels(x as i32), DevicePixels(y as i32));
         let click_count = lock.click_state.update(button, physical_point);
         let scale_factor = lock.scale_factor;
+        log::debug!("handle_mouse_down_msg: click_count={}, scale_factor={}", click_count, scale_factor);
         drop(lock);
 
         let input = PlatformInput::MouseDown(MouseDownEvent {
@@ -480,15 +619,15 @@ impl WindowsWindowInner {
         let Some(mut func) = lock.callbacks.input.take() else {
             return Some(1);
         };
-        let x = lparam.signed_loword() as f32;
-        let y = lparam.signed_hiword() as f32;
+        let _x = lparam.signed_loword() as f32;
+        let _y = lparam.signed_hiword() as f32;
         let click_count = lock.click_state.current_count;
         let scale_factor = lock.scale_factor;
         drop(lock);
 
         let input = PlatformInput::MouseUp(MouseUpEvent {
             button,
-            position: logical_point(x, y, scale_factor),
+            position: logical_point(_x, _y, scale_factor),
             modifiers: current_modifiers(),
             click_count,
         });
@@ -764,9 +903,17 @@ impl WindowsWindowInner {
         lparam: LPARAM,
     ) -> Option<isize> {
         let new_dpi = wparam.loword() as f32;
+        let old_dpi = wparam.hiword() as f32;
+        log::info!("handle_dpi_changed_msg: handle={:?}, old_dpi={}, new_dpi={}", 
+                  handle, old_dpi, new_dpi);
+        
         let mut lock = self.state.borrow_mut();
         let is_maximized = lock.is_maximized();
+        let old_scale_factor = lock.scale_factor;
         let new_scale_factor = new_dpi / USER_DEFAULT_SCREEN_DPI as f32;
+        log::info!("handle_dpi_changed_msg: old_scale_factor={}, new_scale_factor={}, is_maximized={}", 
+                  old_scale_factor, new_scale_factor, is_maximized);
+        
         lock.scale_factor = new_scale_factor;
         lock.border_offset.update(handle).log_err();
         drop(lock);
@@ -774,6 +921,9 @@ impl WindowsWindowInner {
         let rect = unsafe { &*(lparam.0 as *const RECT) };
         let width = rect.right - rect.left;
         let height = rect.bottom - rect.top;
+        log::info!("handle_dpi_changed_msg: suggested rect=({}, {}, {}, {}), width={}, height={}", 
+                  rect.left, rect.top, rect.right, rect.bottom, width, height);
+        
         // this will emit `WM_SIZE` and `WM_MOVE` right here
         // even before this function returns
         // the new size is handled in `WM_SIZE`
@@ -794,10 +944,12 @@ impl WindowsWindowInner {
         // When maximized, SetWindowPos doesn't send WM_SIZE, so we need to manually
         // update the size and call the resize callback
         if is_maximized {
+            log::info!("handle_dpi_changed_msg: manually handling size change for maximized window");
             let device_size = size(DevicePixels(width), DevicePixels(height));
             self.handle_size_change(device_size, new_scale_factor, true);
         }
 
+        log::info!("handle_dpi_changed_msg: completed DPI change handling");
         Some(0)
     }
 
@@ -811,16 +963,22 @@ impl WindowsWindowInner {
     /// For example, in the case of condition 2, where the monitor on which the window is
     /// located has actually changed nothing, it will still receive this event.
     fn handle_display_change_msg(&self, handle: HWND) -> Option<isize> {
+        log::info!("handle_display_change_msg: display configuration changed, handle={:?}", handle);
         // NOTE:
         // Even the `lParam` holds the resolution of the screen, we just ignore it.
         // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
         // are handled there.
         // So we only care about if monitor is disconnected.
         let previous_monitor = self.state.borrow().display;
+        log::info!("handle_display_change_msg: checking previous monitor={:?}", previous_monitor.handle);
+        
         if WindowsDisplay::is_connected(previous_monitor.handle) {
+            log::info!("handle_display_change_msg: previous monitor still connected, other display changed");
             // we are fine, other display changed
             return None;
         }
+        
+        log::warn!("handle_display_change_msg: display disconnected, moving window to new monitor");
         // display disconnected
         // in this case, the OS will move our window to another monitor, and minimize it.
         // we deminimize the window and query the monitor after moving
@@ -828,12 +986,16 @@ impl WindowsWindowInner {
             let _ = ShowWindow(handle, SW_SHOWNORMAL);
         };
         let new_monitor = unsafe { MonitorFromWindow(handle, MONITOR_DEFAULTTONULL) };
+        log::info!("handle_display_change_msg: queried new monitor={:?}", new_monitor);
+        
         // all monitors disconnected
         if new_monitor.is_invalid() {
-            log::error!("No monitor detected!");
+            log::error!("handle_display_change_msg: No monitor detected!");
             return None;
         }
         let new_display = WindowsDisplay::new_with_handle(new_monitor);
+        log::info!("handle_display_change_msg: moved to new display, old={:?}, new={:?}", 
+                  previous_monitor.handle, new_display.handle);
         self.state.borrow_mut().display = new_display;
         Some(0)
     }
@@ -1095,11 +1257,38 @@ impl WindowsWindowInner {
         lparam: LPARAM,
     ) -> Option<isize> {
         if wparam.0 != 0 {
-            let mut lock = self.state.borrow_mut();
-            let display = lock.display;
-            lock.system_settings.update(display, wparam.0);
-            lock.click_state.system_update(wparam.0);
-            lock.border_offset.update(handle).log_err();
+            // Extract the needed values before borrowing to avoid reentrancy issues
+            let display = self.state.borrow().display;
+            
+            // Use a separate scope to ensure the borrow is released before making system calls
+            {
+                let mut lock = self.state.borrow_mut();
+                // Only update settings that don't involve system calls that could trigger reentrancy
+                lock.click_state.system_update(wparam.0);
+                lock.border_offset.update(handle).log_err();
+                
+                // Skip taskbar-related updates that involve SHAppBarMessage to avoid reentrancy
+                if wparam.0 != 47 { // SPI_SETWORKAREA - skip this to avoid SHAppBarMessage calls
+                    lock.system_settings.update(display, wparam.0);
+                }
+            }
+            
+            // Handle taskbar updates separately after releasing the borrow
+            if wparam.0 == 47 {
+                // Update taskbar position without holding the main state lock
+                let new_position = match AutoHideTaskbarPosition::new_safe(display) {
+                    Ok(pos) => pos,
+                    Err(e) => {
+                        log::warn!("Failed to update taskbar position: {}", e);
+                        None
+                    }
+                };
+                
+                // Now safely update the state with the computed position
+                if let Ok(mut lock) = self.state.try_borrow_mut() {
+                    lock.system_settings.auto_hide_taskbar_position = new_position;
+                }
+            }
         } else {
             self.handle_system_theme_changed(handle, lparam)?;
         };
@@ -1247,10 +1436,12 @@ impl WindowsWindowInner {
                 .log_err()
             };
             if let Some(mut callback) = lock.callbacks.hovered_status_change.take() {
+                log::debug!("start_tracking_mouse: executing hovered_status_change callback");
                 drop(lock);
                 callback(true);
                 self.state.borrow_mut().callbacks.hovered_status_change = Some(callback);
             }
+        } else {
         }
     }
 
@@ -1305,6 +1496,13 @@ where
 {
     let virtual_key = VIRTUAL_KEY(wparam.loword());
     let mut modifiers = current_modifiers();
+    let scan_code = lparam.hiword() & 0xFF;
+    let is_extended = (lparam.0 & 0x01000000) != 0;
+    let repeat_count = lparam.loword();
+    let is_key_up = (lparam.0 & 0x80000000) != 0;
+    
+    log::trace!("handle_key_event: handle={:?}, vkey={:?} (0x{:02X}), scan_code=0x{:02X}, modifiers={:?}, is_extended={}, repeat_count={}, is_key_up={}", 
+               handle, virtual_key, virtual_key.0, scan_code, modifiers, is_extended, repeat_count, is_key_up);
 
     match virtual_key {
         VK_SHIFT | VK_CONTROL | VK_MENU | VK_LWIN | VK_RWIN => {
@@ -1314,6 +1512,7 @@ where
             {
                 return None;
             }
+            log::debug!("handle_key_event: modifier key pressed, new modifiers={:?}", modifiers);
             state.last_reported_modifiers = Some(modifiers);
             Some(PlatformInput::ModifiersChanged(ModifiersChangedEvent {
                 modifiers,
@@ -1459,13 +1658,14 @@ fn is_virtual_key_pressed(vkey: VIRTUAL_KEY) -> bool {
 
 #[inline]
 pub(crate) fn current_modifiers() -> Modifiers {
-    Modifiers {
+    let modifiers = Modifiers {
         control: is_virtual_key_pressed(VK_CONTROL),
         alt: is_virtual_key_pressed(VK_MENU),
         shift: is_virtual_key_pressed(VK_SHIFT),
         platform: is_virtual_key_pressed(VK_LWIN) || is_virtual_key_pressed(VK_RWIN),
         function: false,
-    }
+    };
+    modifiers
 }
 
 #[inline]

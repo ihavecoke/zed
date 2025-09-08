@@ -1,0 +1,805 @@
+PS C:\Users\mixbo\dev\ihavecoke\zed> cargo run
+warning: unused variable: `x`
+   --> crates\gpui\src\platform\windows\events.rs:196:13
+    |
+196 |         let x = lparam.signed_loword() as f32;
+    |             ^ help: if this is intentional, prefix it with an underscore: `_x`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `y`
+   --> crates\gpui\src\platform\windows\events.rs:197:13
+    |
+197 |         let y = lparam.signed_hiword() as f32;
+    |             ^ help: if this is intentional, prefix it with an underscore: `_y`
+
+warning: unused variable: `x`
+   --> crates\gpui\src\platform\windows\events.rs:411:13
+    |
+411 |         let x = lparam.signed_loword() as f32;
+    |             ^ help: if this is intentional, prefix it with an underscore: `_x`
+
+warning: unused variable: `y`
+   --> crates\gpui\src\platform\windows\events.rs:412:13
+    |
+412 |         let y = lparam.signed_hiword() as f32;
+    |             ^ help: if this is intentional, prefix it with an underscore: `_y`
+
+warning: unused variable: `pressed_button_flags`
+   --> crates\gpui\src\platform\windows\events.rs:413:13
+    |
+413 |         let pressed_button_flags = MODIFIERKEYS_FLAGS(wparam.loword() as u32);
+    |             ^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pressed_button_flags`
+
+warning: `gpui` (lib) generated 5 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.32s
+     Running `target\debug\zed.exe`
+2025-09-06T00:10:00+08:00 INFO  [zed] ========== starting zed version 0.204.0, sha ebc22c2 ==========
+2025-09-06T00:10:00+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-06T00:10:01+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-06T00:10:01+08:00 INFO  [gpui::platform::windows::direct_write] Use Microsoft YaHei UI as UI font.
+2025-09-06T00:10:01+08:00 INFO  [zed] Using git binary path: None
+2025-09-06T00:10:01+08:00 WARN  [zed::reliability] Minidump endpoint not set
+2025-09-06T00:10:01+08:00 INFO  [extension_host] extensions updated. loading 7, reloading 0, unloading 0
+2025-09-06T00:10:01+08:00 INFO  [gpui::platform::windows::vsync] DirectComposition is supported for VSync, interval: 16.665ms
+2025-09-06T00:10:01+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-06T00:10:01+08:00 INFO  [client] set status on client 0: Authenticating
+2025-09-06T00:10:02+08:00 ERROR [worktree] 拒绝访问。 (os error 5)
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::directx_renderer] Using GPU: NVIDIA GeForce RTX 4060 Ti
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::directx_renderer] Created device with Direct3D 11.1 feature level.
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(0), lparam=LPARAM(12775786368), time=1757088602203
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1 (WM_CREATE), wparam=WPARAM(0), lparam=LPARAM(12775786240), time=1757088602203
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775783184), time=1757088602203
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775783232), time=1757088602203
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(20316480), time=1757088602203
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(98896680), time=1757088602203
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(98896680), width=2856, height=1509
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 2856 px (device) × 1509 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 2856 px (device) × 1509 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 1632px × 862.2857px }
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088602205
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088602205
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602205
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xC (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(1519764635692), time=1757088602208
+2025-09-06T00:10:02+08:00 INFO  [zed::zed] Using GPU: GpuSpecs { is_software_emulated: false, device_name: "NVIDIA GeForce RTX 4060 Ti", driver_name: "NVIDIA Corporation", driver_info: "560.94 r560_88" }
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602530
+2025-09-06T00:10:02+08:00 ERROR [project::git_store] failed to get working directory environment for repository "C:\\Users\\mixbo\\dev\\ihavecoke\\gpui-component"
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xC (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(1519809953532), time=1757088602558
+2025-09-06T00:10:02+08:00 ERROR [gpui] 拒绝访问。 (0x80070005)
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839344), time=1757088602569
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775836432), time=1757088602570
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775836432)
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839296), time=1757088602570
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839344), time=1757088602570
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(18153862), time=1757088602570
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(90179087), time=1757088602570
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(90179087), width=1551, height=1376
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 886.2857px × 786.2857px }
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: executing resize callback
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x18 (WM_SHOWWINDOW), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602572
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839344), time=1757088602620
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839344), time=1757088602620
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(20472), time=1757088602621
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602621
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602623
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088602631
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088602632
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088602632
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088602632
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(18446744073692842307), lparam=LPARAM(0), time=1757088602632
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839344), time=1757088602632
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(90179087), time=1757088602632
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(90179087), width=1551, height=1376
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 886.2857px × 786.2857px }
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: executing resize callback
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(18153862), time=1757088602633
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(168), time=1757088602633
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xC0CA (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088602637
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(168), time=1757088602655
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(168), time=1757088602686
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xC053 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(12775834944), time=1757088602701
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x288 (UNKNOWN), wparam=WPARAM(6), lparam=LPARAM(12775834944), time=1757088602701
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(8), lparam=LPARAM(0), time=1757088602701
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(6), lparam=LPARAM(0), time=1757088602701
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x104 (WM_SYSKEYDOWN), wparam=WPARAM(18), lparam=LPARAM(536870913), time=1757088602702
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_key_event: modifier key pressed, new modifiers=Modifiers { control: false, alt: true, shift: false, platform: false, function: false }
+2025-09-06T00:10:02+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x105 (WM_SYSKEYUP), wparam=WPARAM(18), lparam=LPARAM(3221225473), time=1757088602703
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::events] handle_key_event: modifier key pressed, new modifiers=Modifiers { control: false, alt: false, shift: false, platform: false, function: false }
+2025-09-06T00:10:02+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-06T00:10:03+08:00 INFO  [client] set status on client 141689: Authenticated
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615175
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615182
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615188
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615195
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615461
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615463
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615464
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615464
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088615464
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088615464
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615924
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615944
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615955
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088615973
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615986
+2025-09-06T00:10:15+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088615996
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616009
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616035
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616163
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616175
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616191
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616201
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1E (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616212
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616213
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616221
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616229
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616237
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616246
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616254
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31B (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616262
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(12775842872), time=1757088616264
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] System settings changed: devices
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839504), time=1757088616264
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616265
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(151063754), lparam=LPARAM(0), time=1757088616265
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839552), time=1757088616266
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(12775842872), time=1757088616268
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] System settings changed: windows
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839504), time=1757088616268
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616269
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(302055829), lparam=LPARAM(0), time=1757088616270
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839552), time=1757088616271
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31A (UNKNOWN), wparam=WPARAM(5111811), lparam=LPARAM(1), time=1757088616331
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839936), time=1757088616362
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839888), time=1757088616367
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616370
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(151063754), lparam=LPARAM(0), time=1757088616380
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839936), time=1757088616395
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E4 (UNKNOWN), wparam=WPARAM(96), lparam=LPARAM(12775842864), time=1757088616422
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E0 (WM_DPICHANGED), wparam=WPARAM(6291552), lparam=LPARAM(12775842848), time=1757088616434
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: handle=HWND(0x10070a), old_dpi=96, new_dpi=96
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: old_scale_factor=1.75, new_scale_factor=1, is_maximized=false
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: suggested rect=(146, 73, 1046, 867), width=900, height=794
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088616436
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775835616), time=1757088616439
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775835616)
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(384, 254)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775838480), time=1757088616442
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616443
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088616448
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616451
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616453
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(184615134), lparam=LPARAM(0), time=1757088616457
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088616460
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(4849818), time=1757088616461
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(51446644), time=1757088616462
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(51446644), width=884, height=785
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 884 px (device) × 785 px (device) }, scale_factor=1, should_resize_renderer=true
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 884 px (device) × 785 px (device) }, scale_factor=1, should_resize_renderer=true
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 884px × 785px }
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: executing resize callback
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: completed DPI change handling
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088616470
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775842784), time=1757088616471
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616472
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(151063754), lparam=LPARAM(0), time=1757088616473
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088616474
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1E (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616523
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088616530
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7E (WM_DISPLAYCHANGE), wparam=WPARAM(32), lparam=LPARAM(61867496), time=1757088616568
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: display configuration changed, handle=HWND(0x10070a)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: checking previous monitor=HMONITOR(0x10001)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: previous monitor still connected, other display changed
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x15 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616577
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088616587
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616589
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(302055829), lparam=LPARAM(0), time=1757088616597
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088616603
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616607
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616608
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616615
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088616618
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088616622
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616626
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616641
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088616643
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616644
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(335612740), lparam=LPARAM(0), time=1757088616649
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088616651
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616791
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616832
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088616849
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616864
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616875
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616893
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616923
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616929
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(10456), time=1757088616934
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088616936
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088616939
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616945
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088616947
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775839920), time=1757088616949
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775839920)
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:16+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(384, 254)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7E (WM_DISPLAYCHANGE), wparam=WPARAM(32), lparam=LPARAM(62260712), time=1757088616958
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: display configuration changed, handle=HWND(0x10070a)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: checking previous monitor=HMONITOR(0x10001)
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: previous monitor still connected, other display changed
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(47), lparam=LPARAM(0), time=1757088616960
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088616969
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088616971
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(604047468), lparam=LPARAM(0), time=1757088616975
+2025-09-06T00:10:16+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088616977
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088617139
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775839920), time=1757088617140
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775839920)
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1, border_offset=WindowBorderOffset { width_offset: 16, height_offset: 9 }
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(376, 249)
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(47), lparam=LPARAM(0), time=1757088617146
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088617201
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088617205
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(18446744071646022245), lparam=LPARAM(0), time=1757088617209
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088617211
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088617214
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775839920), time=1757088617215
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775839920)
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1, border_offset=WindowBorderOffset { width_offset: 16, height_offset: 9 }
+2025-09-06T00:10:17+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(376, 249)
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(47), lparam=LPARAM(0), time=1757088617218
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088617222
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088617222
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(18446744072870759726), lparam=LPARAM(0), time=1757088617223
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088617223
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(96), time=1757088617347
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(96), time=1757088617364
+2025-09-06T00:10:17+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(96), time=1757088617401
+2025-09-06T00:10:23+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x21 (UNKNOWN), wparam=WPARAM(1050378), lparam=LPARAM(33619969), time=1757088623343
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088623345
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088623346
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(838928977), lparam=LPARAM(0), time=1757088623349
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088623350
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088623350
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088623351
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088623351
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088623351
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088623351
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088623351
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(23659140), time=1757088623351
+2025-09-06T00:10:23+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=644, y=361
+2025-09-06T00:10:23+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(23659140), time=1757088623460
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088623460
+2025-09-06T00:10:23+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088623932
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088624510
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088624513
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(20472), time=1757088624514
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088624514
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088624514
+2025-09-06T00:10:24+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088624515
+2025-09-06T00:10:25+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088625209
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x21 (UNKNOWN), wparam=WPARAM(1050378), lparam=LPARAM(33619969), time=1757088625447
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088625450
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088625453
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088625456
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088625457
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088625458
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088625459
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088625460
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088625460
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(27984281), time=1757088625462
+2025-09-06T00:10:25+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=409, y=427
+2025-09-06T00:10:25+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(27984281), time=1757088625579
+2025-09-06T00:10:25+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088625579
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088626038
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088626304
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088626306
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65567), time=1757088626341
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088626369
+2025-09-06T00:10:26+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65567), time=1757088626370
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088628270
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088628310
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088628548
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088628549
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(20472), time=1757088628549
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088628549
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088628549
+2025-09-06T00:10:28+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088628549
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088633481
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088633501
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088633514
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088633524
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088633536
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088633544
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088633632
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088633654
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E4 (UNKNOWN), wparam=WPARAM(168), lparam=LPARAM(12775842864), time=1757088633767
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E0 (WM_DPICHANGED), wparam=WPARAM(11010216), lparam=LPARAM(12775842848), time=1757088633775
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: handle=HWND(0x10070a), old_dpi=168, new_dpi=168
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: old_scale_factor=1, new_scale_factor=1.75, is_maximized=false
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: suggested rect=(378, 275, 1953, 1665), width=1575, height=1390
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088633776
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775835616), time=1757088633779
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775835616)
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 16, height_offset: 9 }
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(646, 429)
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775838480), time=1757088633780
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088633781
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088633784
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088633787
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088633795
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(18446744071847348495), lparam=LPARAM(0), time=1757088633805
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088633808
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(18153862), time=1757088633808
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(90179087), time=1757088633810
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(90179087), width=1551, height=1376
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 1551 px (device) × 1376 px (device) }, scale_factor=1.75, should_resize_renderer=true
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 886.2857px × 786.2857px }
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:10:33+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: executing resize callback
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: completed DPI change handling
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088633827
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775842784), time=1757088633828
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088633830
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(520159396), lparam=LPARAM(0), time=1757088633835
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088633837
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7E (WM_DISPLAYCHANGE), wparam=WPARAM(32), lparam=LPARAM(141561600), time=1757088633842
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: display configuration changed, handle=HWND(0x10070a)
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: checking previous monitor=HMONITOR(0x10001)
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: previous monitor still connected, other display changed
+2025-09-06T00:10:33+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(47), lparam=LPARAM(0), time=1757088633845
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088634089
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088634090
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(520159396), lparam=LPARAM(0), time=1757088634090
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088634090
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(168), time=1757088634140
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1E (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088634156
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(168), time=1757088634238
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31B (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088634286
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31A (UNKNOWN), wparam=WPARAM(5111812), lparam=LPARAM(1), time=1757088634313
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839936), time=1757088634336
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839888), time=1757088634351
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(18446744073693039821), lparam=LPARAM(0), time=1757088634353
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839936), time=1757088634358
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(168), time=1757088634369
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1E (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088634372
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7E (WM_DISPLAYCHANGE), wparam=WPARAM(32), lparam=LPARAM(141561600), time=1757088634405
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: display configuration changed, handle=HWND(0x10070a)
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: checking previous monitor=HMONITOR(0x10001)
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: previous monitor still connected, other display changed
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x15 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088634416
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088634420
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839520), time=1757088634422
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088634424
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(654380642), lparam=LPARAM(0), time=1757088634427
+2025-09-06T00:10:34+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839568), time=1757088634430
+2025-09-06T00:10:37+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088637957
+2025-09-06T00:10:37+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088637958
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088638066
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088638068
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(20472), time=1757088638070
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088638071
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088638071
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088638072
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088638072
+2025-09-06T00:10:38+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088638072
+2025-09-06T00:10:38+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088639001
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088639003
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(20472), time=1757088639005
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088639005
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088639006
+2025-09-06T00:10:39+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088639007
+2025-09-06T00:10:41+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x21 (UNKNOWN), wparam=WPARAM(1050378), lparam=LPARAM(33619969), time=1757088641570
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088641575
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088641578
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088641581
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088641581
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088641582
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088641582
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088641582
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088641582
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(52691996), time=1757088641583
+2025-09-06T00:10:41+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=1052, y=804
+2025-09-06T00:10:41+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(52298777), time=1757088641643
+2025-09-06T00:10:41+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088641643
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(29295324), time=1757088642088
+2025-09-06T00:10:42+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=732, y=447
+2025-09-06T00:10:42+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(29295324), time=1757088642168
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088642169
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(28574644), time=1757088642456
+2025-09-06T00:10:42+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=948, y=436
+2025-09-06T00:10:42+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(28574644), time=1757088642552
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088642553
+2025-09-06T00:10:42+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088642969
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xA1 (WM_NCLBUTTONDOWN), wparam=WPARAM(2), lparam=LPARAM(19334381), time=1757088643328
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x112 (WM_SYSCOMMAND), wparam=WPARAM(61458), lparam=LPARAM(19334381), time=1757088643330
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088643408
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643409
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775836304)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x231 (WM_ENTERSIZEMOVE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088643412
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_move_loop: starting timer for handle=HWND(0x10070a)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_move_loop: timer created successfully, ret=1
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643416
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643416
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643417
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643418
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(19005844), time=1757088643419
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643423
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643455
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643455
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643456
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643456
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(21365211), time=1757088643456
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643457
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643457
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643457
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643457
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(22151666), time=1757088643457
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643458
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643475
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643475
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643475
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643475
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(24052267), time=1757088643476
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643476
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643493
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643494
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643494
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643494
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(26083956), time=1757088643494
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643496
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643496
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643496
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643496
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(27067036), time=1757088643496
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643503
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643530
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643530
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643530
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643530
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(28967689), time=1757088643531
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643531
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643552
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643552
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643553
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643553
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(29426486), time=1757088643553
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643553
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643571
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643571
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643571
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643572
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(29557576), time=1757088643572
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643572
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643588
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643588
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643588
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643589
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(29557581), time=1757088643589
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643590
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643606
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643622
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 0 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x216 (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(12775836320), time=1757088643624
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643624
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775833392), time=1757088643624
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775833392)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1.75, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(654, 434)
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643625
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(29557582), time=1757088643625
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x113 (WM_TIMER), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088643638
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: handle=HWND(0x10070a), wparam=WPARAM(1)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_timer_msg: processing 17 runnables during size/move loop
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088643661
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775836304), time=1757088643661
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x232 (WM_EXITSIZEMOVE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088643661
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] handle_size_move_loop_exit: stopping timer for handle=HWND(0x10070a)
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:43+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65567), time=1757088643905
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088643953
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65553), time=1757088643986
+2025-09-06T00:10:43+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65567), time=1757088643993
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(24379574), time=1757088644409
+2025-09-06T00:10:44+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=182, y=372
+2025-09-06T00:10:44+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(24379574), time=1757088644528
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088644528
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xC (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(1519813770412), time=1757088644533
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0xAE (UNKNOWN), wparam=WPARAM(9), lparam=LPARAM(0), time=1757088644533
+2025-09-06T00:10:44+08:00 DEBUG [gpui::platform::windows::dispatcher] TaskLabel: TaskLabel(1)
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(168), time=1757088644630
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(168), time=1757088644631
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(168), time=1757088644631
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(23658682), time=1757088644753
+2025-09-06T00:10:44+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=186, y=361
+2025-09-06T00:10:44+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(23462074), time=1757088644833
+2025-09-06T00:10:44+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088644833
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(14418023), time=1757088645169
+2025-09-06T00:10:45+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=103, y=220
+2025-09-06T00:10:45+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(14418023), time=1757088645289
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088645289
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(10944628), time=1757088645520
+2025-09-06T00:10:45+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=116, y=167
+2025-09-06T00:10:45+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(10944628), time=1757088645609
+2025-09-06T00:10:45+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088645610
+2025-09-06T00:10:46+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65553), time=1757088646121
+2025-09-06T00:10:47+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x201 (WM_LBUTTONDOWN), wparam=WPARAM(1), lparam=LPARAM(4456864), time=1757088647080
+2025-09-06T00:10:47+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: handle=HWND(0x10070a), button=Left, x=416, y=68
+2025-09-06T00:10:47+08:00 DEBUG [gpui::platform::windows::events] handle_mouse_down_msg: click_count=1, scale_factor=1.75
+2025-09-06T00:10:47+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65567), time=1757088647217
+2025-09-06T00:10:47+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x202 (WM_LBUTTONUP), wparam=WPARAM(0), lparam=LPARAM(4718909), time=1757088647592
+2025-09-06T00:10:47+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x215 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088647593
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65553), time=1757088649521
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088649530
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088649539
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088649942
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088649947
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(20472), time=1757088649950
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088649952
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088649953
+2025-09-06T00:10:49+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088649954
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088650862
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(20472), time=1757088650864
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088650864
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088650866
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(3221225487), time=1757088650867
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088650868
+2025-09-06T00:10:50+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088650868
+2025-09-06T00:10:51+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:51+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088651357
+2025-09-06T00:10:51+08:00 DEBUG [gpui::platform::windows::events] start_tracking_mouse: executing hovered_status_change callback
+2025-09-06T00:10:51+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65541), time=1757088651385
+2025-09-06T00:10:51+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x401 (WM_GPUI_CURSOR_STYLE_CHANGED), wparam=WPARAM(0), lparam=LPARAM(65539), time=1757088651641
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x86 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088652350
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x6 (WM_ACTIVATE), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088652357
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1C (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(2308), time=1757088652362
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x8 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088652363
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x281 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(3221225487), time=1757088652364
+2025-09-06T00:10:52+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x282 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088652365
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692107
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692181
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692221
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692335
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692352
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692362
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692374
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692390
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x219 (WM_DEVICECHANGE), wparam=WPARAM(7), lparam=LPARAM(0), time=1757088692414
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692427
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1E (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692446
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692449
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692473
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692487
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692501
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692517
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692534
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692548
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x405 (WM_GPUI_FORCE_UPDATE_WINDOW), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692563
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x31B (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692575
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(12775842872), time=1757088692578
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] System settings changed: devices
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839504), time=1757088692578
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088692579
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(469830250), lparam=LPARAM(0), time=1757088692582
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839552), time=1757088692583
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(0), lparam=LPARAM(12775842872), time=1757088692584
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] System settings changed: windows
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775839504), time=1757088692585
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088692586
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(352390786), lparam=LPARAM(0), time=1757088692587
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775839552), time=1757088692588
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E4 (UNKNOWN), wparam=WPARAM(96), lparam=LPARAM(12775842864), time=1757088692590
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x2E0 (WM_DPICHANGED), wparam=WPARAM(6291552), lparam=LPARAM(12775842848), time=1757088692592
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: handle=HWND(0x10070a), old_dpi=96, new_dpi=96
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: old_scale_factor=1.75, new_scale_factor=1, is_maximized=false
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: suggested rect=(146, 73, 1046, 867), width=900, height=794
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088692593
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x24 (WM_GETMINMAXINFO), wparam=WPARAM(0), lparam=LPARAM(12775835616), time=1757088692593
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: lparam=LPARAM(12775835616)
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: min_size=Size { 360px × 240px }, scale_factor=1, border_offset=WindowBorderOffset { width_offset: 24, height_offset: 14 }
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_get_min_max_info_msg: set ptMinTrackSize=(384, 254)
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775838480), time=1757088692593
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088692594
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(2), lparam=LPARAM(0), time=1757088692595
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(0), time=1757088692596
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7F (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088692597
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(469830250), lparam=LPARAM(0), time=1757088692599
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775838528), time=1757088692600
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x3 (WM_MOVE), wparam=WPARAM(0), lparam=LPARAM(4849818), time=1757088692600
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x5 (WM_SIZE), wparam=WPARAM(0), lparam=LPARAM(51446644), time=1757088692600
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: wparam=WPARAM(0) (SIZE_RESTORED), lparam=LPARAM(51446644), width=884, height=785
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_msg: new_size=Size { 884 px (device) × 785 px (device) }, scale_factor=1, should_resize_renderer=true
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: device_size=Size { 884 px (device) × 785 px (device) }, scale_factor=1, should_resize_renderer=true
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: new_logical_size=Size { 884px × 785px }
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: resizing renderer
+2025-09-06T00:11:32+08:00 DEBUG [gpui::platform::windows::events] handle_size_change: executing resize callback
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] handle_dpi_changed_msg: completed DPI change handling
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x46 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088692606
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x83 (WM_NCCALCSIZE), wparam=WPARAM(1), lparam=LPARAM(12775842784), time=1757088692606
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x85 (UNKNOWN), wparam=WPARAM(1), lparam=LPARAM(0), time=1757088692607
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x14 (UNKNOWN), wparam=WPARAM(469830250), lparam=LPARAM(0), time=1757088692608
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x47 (UNKNOWN), wparam=WPARAM(0), lparam=LPARAM(12775842832), time=1757088692608
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x1A (WM_SETTINGCHANGE), wparam=WPARAM(47), lparam=LPARAM(0), time=1757088692611
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] WinEvent: handle=HWND(0x10070a), msg=0x7E (WM_DISPLAYCHANGE), wparam=WPARAM(32), lparam=LPARAM(61867496), time=1757088692764
+2025-09-06T00:11:32+08:00 INFO  [gpui::platform::windows::events] handle_display_change_msg: display configuration changed, handle=HWND(0x10070a)
+Thread "main" panicked with "RefCell already mutably borrowed" at crates\gpui\src\platform\windows\events.rs:972:43
+https://github.com/zed-industries/zed/blob/ebc22c290bd0222261c7719dfc781ce5692060ca/crates\gpui\src\platform\windows\events.rs#L972 (may not be uploaded, line may be incorrect if files modified)
+   0: backtrace::backtrace::dbghelp64::trace
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\backtrace\dbghelp64.rs:91
+      backtrace::backtrace::trace_unsynchronized<backtrace::capture::impl$4::create::closure_env$0>
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\backtrace\mod.rs:66
+   1: backtrace::backtrace::trace<backtrace::capture::impl$4::create::closure_env$0>
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\backtrace\mod.rs:53
+   2: backtrace::capture::Backtrace::create
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\capture.rs:292
+   3: backtrace::capture::Backtrace::new
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\backtrace-0.3.74\src\capture.rs:257
+   4: zed::reliability::init_panic_hook::closure$0
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\zed\src\reliability.rs:72
+   5: std::panicking::rust_panic_with_hook
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panicking.rs:841
+   6: std::panicking::begin_panic_handler::closure$0
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panicking.rs:706
+   7: std::sys::backtrace::__rust_end_short_backtrace<std::panicking::begin_panic_handler::closure_env$0,never$>
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\sys\backtrace.rs:168
+   8: std::panicking::begin_panic_handler
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panicking.rs:697
+   9: core::panicking::panic_fmt
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\core\src\panicking.rs:75
+  10: core::cell::panic_already_mutably_borrowed
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\core\src\cell.rs:793
+  11: core::cell::RefCell<gpui::platform::windows::window::WindowsWindowState>::borrow<gpui::platform::windows::window::WindowsWindowState>
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\core\src\cell.rs:981
+  12: gpui::platform::windows::window::WindowsWindowInner::handle_display_change_msg
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:972
+  13: gpui::platform::windows::window::WindowsWindowInner::handle_msg
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:129
+  14: gpui::platform::windows::window::window_procedure
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\window.rs:1173
+  15: CallWindowProcW
+  16: SendMessageW
+  17: GetWindowDpiAwarenessContext
+  18: KiUserCallbackDispatcher
+  19: NtUserMessageCall
+  20: SendMessageW
+  21: SendMessageW
+  22: SendMessageW
+  23: SHAppBarMessage
+  24: windows::Win32::UI::Shell::SHAppBarMessage
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\windows-0.61.1\src\Windows\Win32\UI\Shell\mod.rs:2417
+  25: gpui::platform::windows::system_settings::check_auto_hide_taskbar_enable
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\system_settings.rs:195
+  26: gpui::platform::windows::system_settings::AutoHideTaskbarPosition::new
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\system_settings.rs:113
+  27: gpui::platform::windows::system_settings::WindowsSystemSettings::update_taskbar_position
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\system_settings.rs:59
+  28: gpui::platform::windows::system_settings::WindowsSystemSettings::update
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\system_settings.rs:47
+  29: gpui::platform::windows::window::WindowsWindowInner::handle_system_settings_changed
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:1262
+  30: gpui::platform::windows::window::WindowsWindowInner::handle_msg
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\events.rs:179
+  31: gpui::platform::windows::window::window_procedure
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\window.rs:1173
+  32: CallWindowProcW
+  33: SendMessageW
+  34: User32InitializeImmEntryTable
+  35: KiUserCallbackDispatcher
+  36: NtUserGetMessage
+  37: GetMessageW
+  38: windows::Win32::UI::WindowsAndMessaging::GetMessageW
+             at C:\Users\mixbo\.cargo\registry\src\rsproxy.cn-e3de039b2554c837\windows-0.61.1\src\Windows\Win32\UI\WindowsAndMessaging\mod.rs:999
+  39: gpui::platform::windows::platform::impl$2::run
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\platform\windows\platform.rs:290
+  40: gpui::app::Application::run<zed::main::closure_env$8>
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\gpui\src\app.rs:180
+  41: zed::main
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\zed\src\main.rs:383
+  42: zed::main
+             at C:\Users\mixbo\dev\ihavecoke\zed\crates\zed\src\zed-main.rs:7
+  43: core::ops::function::FnOnce::call_once<void (*)(),tuple$<> >
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\core\src\ops\function.rs:250
+  44: core::hint::black_box
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\core\src\hint.rs:482
+      std::sys::backtrace::__rust_begin_short_backtrace<void (*)(),tuple$<> >
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\std\src\sys\backtrace.rs:152
+  45: std::rt::lang_start::closure$0<tuple$<> >
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\std\src\rt.rs:206
+  46: std::rt::lang_start_internal::closure$0
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\rt.rs:175
+      std::panicking::catch_unwind::do_call
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panicking.rs:589
+      std::panicking::catch_unwind
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panicking.rs:552
+      std::panic::catch_unwind
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\panic.rs:359
+      std::rt::lang_start_internal
+             at /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library\std\src\rt.rs:171
+  47: std::rt::lang_start<tuple$<> >
+             at C:\Users\mixbo\.rustup\toolchains\1.89-x86_64-pc-windows-msvc\lib\rustlib\src\rust\library\std\src\rt.rs:205
+  48: main
+  49: invoke_main
+             at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+      __scrt_common_main_seh
+             at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+  50: BaseThreadInitThunk
+  51: RtlUserThreadStart

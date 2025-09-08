@@ -110,7 +110,12 @@ pub(crate) enum AutoHideTaskbarPosition {
 
 impl AutoHideTaskbarPosition {
     fn new(display: WindowsDisplay) -> anyhow::Result<Option<Self>> {
-        if !check_auto_hide_taskbar_enable() {
+        Self::new_safe(display)
+    }
+    
+    /// Safe version that can be called without risking reentrancy issues
+    pub fn new_safe(display: WindowsDisplay) -> anyhow::Result<Option<Self>> {
+        if !check_auto_hide_taskbar_enable_safe() {
             // If auto hide taskbar is not enable, we do nothing in this case.
             return Ok(None);
         }
@@ -186,8 +191,8 @@ impl AutoHideTaskbarPosition {
     }
 }
 
-/// Check if auto hide taskbar is enable or not.
-fn check_auto_hide_taskbar_enable() -> bool {
+/// Safe version of check_auto_hide_taskbar_enable that should not cause reentrancy
+fn check_auto_hide_taskbar_enable_safe() -> bool {
     let mut info = APPBARDATA {
         cbSize: std::mem::size_of::<APPBARDATA>() as u32,
         ..Default::default()
@@ -195,3 +200,4 @@ fn check_auto_hide_taskbar_enable() -> bool {
     let ret = unsafe { SHAppBarMessage(ABM_GETSTATE, &mut info) } as u32;
     ret == ABS_AUTOHIDE
 }
+

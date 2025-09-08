@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo check --package gpui)",
+      "Bash(cargo run)",
+      "Bash(taskkill /F /PID 8672)",
+      "Bash(ZED_LOG=\"gpui=trace\" cargo run)",
+      "Bash(powershell Get-Content log.txt -Wait)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
