@@ -816,8 +816,11 @@ impl WindowsWindowInner {
         // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
         // are handled there.
         // So we only care about if monitor is disconnected.
-        let previous_monitor = self.state.borrow().display;
-        if WindowsDisplay::is_connected(previous_monitor.handle) {
+        let previous_handle = {
+            let previous_monitor = self.state.borrow().display;
+            previous_monitor.handle
+        };
+        if WindowsDisplay::is_connected(handle) {
             // we are fine, other display changed
             return None;
         }
