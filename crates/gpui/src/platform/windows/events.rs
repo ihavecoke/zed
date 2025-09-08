@@ -180,7 +180,14 @@ impl WindowsWindowInner {
             WM_INPUTLANGCHANGE => self.handle_input_language_changed(),
             WM_SHOWWINDOW => self.handle_window_visibility_changed(handle, wparam),
             WM_GPUI_CURSOR_STYLE_CHANGED => self.handle_cursor_changed(lparam),
-            WM_GPUI_FORCE_UPDATE_WINDOW => self.draw_window(handle, true),
+            WM_GPUI_FORCE_UPDATE_WINDOW => {
+                // Check if this is a delayed display change handling (lparam=1)
+                if lparam.0 == 1 {
+                    self.handle_display_change_delayed(handle)
+                } else {
+                    self.draw_window(handle, true)
+                }
+            }
             _ => None,
         };
         if let Some(n) = handled {
@@ -958,58 +965,68 @@ impl WindowsWindowInner {
     /// 2. Another monitor goes offline, is plugged in, or changes resolution.
     /// 3. Remote Desktop connection/disconnection (creates/removes virtual monitors)
     ///
-    /// In either case, the window will only receive information from the monitor on which
-    /// it is located.
-    ///
     /// CRITICAL: Remote Desktop disconnect is a common cause of this event and can trigger
-    /// reentrancy deadlocks if we call EnumDisplayMonitors during message processing.
+    /// reentrancy deadlocks if we call ANY system APIs during message processing.
+    ///
+    /// SOLUTION: Post a delayed message to handle display changes asynchronously
     fn handle_display_change_msg(&self, handle: HWND) -> Option<isize> {
         log::info!("handle_display_change_msg: display configuration changed, handle={:?}", handle);
         log::info!("handle_display_change_msg: this could be Remote Desktop disconnect or monitor change");
         
-        // SOLUTION: Skip the problematic is_connected check entirely to avoid EnumDisplayMonitors reentrancy
-        // Instead, assume the monitor may be disconnected and always attempt window recovery
-        // This is safer for Remote Desktop scenarios where virtual monitors disappear suddenly
+        // CRITICAL FIX: Do NOT call any system APIs that might trigger window messages
+        // during WM_DISPLAYCHANGE processing. Instead, post a custom message to handle
+        // the display change asynchronously after the current message is fully processed.
         
-        // Extract display information first and immediately drop the borrow
-        let previous_monitor = {
-            let state = self.state.borrow();
-            state.display
-        }; // RefCell borrow is dropped here
+        log::warn!("handle_display_change_msg: posting delayed message to avoid reentrancy deadlock");
+        unsafe {
+            // Post our custom message to handle display change after current message completes
+            PostMessageW(
+                Some(handle),
+                WM_GPUI_FORCE_UPDATE_WINDOW,  // Reuse existing custom message
+                WPARAM(0),
+                LPARAM(1), // Use lparam=1 to indicate this is for display change handling
+            ).log_err();
+        }
         
-        log::warn!("handle_display_change_msg: skipping is_connected check to avoid reentrancy deadlock");
-        log::warn!("handle_display_change_msg: assuming monitor may be disconnected, attempting window recovery");
+        // Return immediately without calling any problematic APIs
+        Some(0)
+    }
+
+    /// Handle display changes in a delayed, safe manner after WM_DISPLAYCHANGE processing is complete
+    /// This avoids all reentrancy issues by executing after the current message loop iteration
+    fn handle_display_change_delayed(&self, handle: HWND) -> Option<isize> {
+        log::info!("handle_display_change_delayed: safely handling display change after message processing");
         
-        log::warn!("handle_display_change_msg: display disconnected, moving window to new monitor");
-        // display disconnected
-        // in this case, the OS will move our window to another monitor, and minimize it.
-        // we deminimize the window and query the monitor after moving
+        // Now we can safely call system APIs since we're not in WM_DISPLAYCHANGE handling
+        
+        // First try to restore the window if it was minimized by Remote Desktop disconnect
         unsafe {
             let _ = ShowWindow(handle, SW_SHOWNORMAL);
         };
+        
+        // Query the current monitor safely
         let new_monitor = unsafe { MonitorFromWindow(handle, MONITOR_DEFAULTTONULL) };
-        log::info!("handle_display_change_msg: queried new monitor={:?}", new_monitor);
+        log::info!("handle_display_change_delayed: queried new monitor={:?}", new_monitor);
         
-        // all monitors disconnected
         if new_monitor.is_invalid() {
-            log::error!("handle_display_change_msg: No monitor detected!");
-            return None;
+            log::error!("handle_display_change_delayed: No monitor detected!");
+            return Some(0);
         }
-        let new_display = WindowsDisplay::new_with_handle(new_monitor);
-        log::info!("handle_display_change_msg: moved to new display, old={:?}, new={:?}", 
-                  previous_monitor.handle, new_display.handle);
         
-        // Update the display using a separate borrow to avoid reentrancy issues
-        // If we can't update immediately, we'll gracefully degrade instead of retrying
+        // Create new display info (this may call EnumDisplayMonitors, but it's safe now)
+        let new_display = WindowsDisplay::new_with_handle(new_monitor);
+        log::info!("handle_display_change_delayed: created new display info: {:?}", new_display.handle);
+        
+        // Update the display state
         if let Ok(mut state) = self.state.try_borrow_mut() {
             state.display = new_display;
+            log::info!("handle_display_change_delayed: successfully updated display state");
         } else {
-            log::warn!("handle_display_change_msg: Could not update display due to concurrent borrow");
-            log::warn!("Display update will be handled by next window event that can safely update state");
-            // Don't retry - just let the next window event (like WM_MOVE, WM_SIZE) handle the display update
-            // This prevents infinite message loops
+            log::warn!("handle_display_change_delayed: Could not update display state due to concurrent access");
         }
-        Some(0)
+        
+        // Also trigger a window redraw to ensure everything is displayed correctly
+        self.draw_window(handle, true)
     }
 
     fn handle_hit_test_msg(
