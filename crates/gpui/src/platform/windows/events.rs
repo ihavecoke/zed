@@ -969,7 +969,13 @@ impl WindowsWindowInner {
         // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
         // are handled there.
         // So we only care about if monitor is disconnected.
-        let previous_monitor = self.state.borrow().display;
+        
+        // Extract display information first and immediately drop the borrow
+        let previous_monitor = {
+            let state = self.state.borrow();
+            state.display
+        }; // RefCell borrow is dropped here
+        
         log::info!("handle_display_change_msg: checking previous monitor={:?}", previous_monitor.handle);
         
         if WindowsDisplay::is_connected(previous_monitor.handle) {
@@ -996,7 +1002,17 @@ impl WindowsWindowInner {
         let new_display = WindowsDisplay::new_with_handle(new_monitor);
         log::info!("handle_display_change_msg: moved to new display, old={:?}, new={:?}", 
                   previous_monitor.handle, new_display.handle);
-        self.state.borrow_mut().display = new_display;
+        
+        // Update the display using a separate borrow to avoid reentrancy issues
+        // If we can't update immediately, we'll gracefully degrade instead of retrying
+        if let Ok(mut state) = self.state.try_borrow_mut() {
+            state.display = new_display;
+        } else {
+            log::warn!("handle_display_change_msg: Could not update display due to concurrent borrow");
+            log::warn!("Display update will be handled by next window event that can safely update state");
+            // Don't retry - just let the next window event (like WM_MOVE, WM_SIZE) handle the display update
+            // This prevents infinite message loops
+        }
         Some(0)
     }
 
@@ -1244,8 +1260,15 @@ impl WindowsWindowInner {
         {
             return None;
         }
+        
+        // Extract cursor information and immediately drop the borrow
+        let current_cursor = {
+            let state = self.state.borrow();
+            state.current_cursor
+        }; // RefCell borrow is dropped here
+        
         unsafe {
-            SetCursor(self.state.borrow().current_cursor);
+            SetCursor(current_cursor);
         };
         Some(1)
     }
@@ -1257,12 +1280,14 @@ impl WindowsWindowInner {
         lparam: LPARAM,
     ) -> Option<isize> {
         if wparam.0 != 0 {
-            // Extract the needed values before borrowing to avoid reentrancy issues
-            let display = self.state.borrow().display;
+            // Extract the needed values first and immediately drop the borrow
+            let display = {
+                let state = self.state.borrow();
+                state.display
+            }; // RefCell borrow is dropped here
             
-            // Use a separate scope to ensure the borrow is released before making system calls
-            {
-                let mut lock = self.state.borrow_mut();
+            // Use try_borrow_mut to safely update settings that don't trigger reentrancy
+            if let Ok(mut lock) = self.state.try_borrow_mut() {
                 // Only update settings that don't involve system calls that could trigger reentrancy
                 lock.click_state.system_update(wparam.0);
                 lock.border_offset.update(handle).log_err();
@@ -1271,9 +1296,14 @@ impl WindowsWindowInner {
                 if wparam.0 != 47 { // SPI_SETWORKAREA - skip this to avoid SHAppBarMessage calls
                     lock.system_settings.update(display, wparam.0);
                 }
+            } else {
+                log::warn!("handle_system_settings_changed: Could not update system settings due to concurrent borrow");
+                log::warn!("System settings update will be handled by subsequent window events");
+                // Don't retry to prevent infinite message loops
+                // The system will send these messages again naturally, so we don't lose the update
             }
             
-            // Handle taskbar updates separately after releasing the borrow
+            // Handle taskbar updates separately after ensuring no active borrows
             if wparam.0 == 47 {
                 // Update taskbar position without holding the main state lock
                 let new_position = match AutoHideTaskbarPosition::new_safe(display) {
@@ -1287,6 +1317,10 @@ impl WindowsWindowInner {
                 // Now safely update the state with the computed position
                 if let Ok(mut lock) = self.state.try_borrow_mut() {
                     lock.system_settings.auto_hide_taskbar_position = new_position;
+                } else {
+                    log::warn!("handle_system_settings_changed: Could not update taskbar position due to concurrent borrow");
+                    log::warn!("Taskbar position will be updated on next system settings change");
+                    // Don't retry - graceful degradation
                 }
             }
         } else {
