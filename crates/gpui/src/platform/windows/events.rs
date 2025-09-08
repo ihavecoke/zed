@@ -956,19 +956,20 @@ impl WindowsWindowInner {
     /// The following conditions will trigger this event:
     /// 1. The monitor on which the window is located goes offline or changes resolution.
     /// 2. Another monitor goes offline, is plugged in, or changes resolution.
+    /// 3. Remote Desktop connection/disconnection (creates/removes virtual monitors)
     ///
     /// In either case, the window will only receive information from the monitor on which
     /// it is located.
     ///
-    /// For example, in the case of condition 2, where the monitor on which the window is
-    /// located has actually changed nothing, it will still receive this event.
+    /// CRITICAL: Remote Desktop disconnect is a common cause of this event and can trigger
+    /// reentrancy deadlocks if we call EnumDisplayMonitors during message processing.
     fn handle_display_change_msg(&self, handle: HWND) -> Option<isize> {
         log::info!("handle_display_change_msg: display configuration changed, handle={:?}", handle);
-        // NOTE:
-        // Even the `lParam` holds the resolution of the screen, we just ignore it.
-        // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
-        // are handled there.
-        // So we only care about if monitor is disconnected.
+        log::info!("handle_display_change_msg: this could be Remote Desktop disconnect or monitor change");
+        
+        // SOLUTION: Skip the problematic is_connected check entirely to avoid EnumDisplayMonitors reentrancy
+        // Instead, assume the monitor may be disconnected and always attempt window recovery
+        // This is safer for Remote Desktop scenarios where virtual monitors disappear suddenly
         
         // Extract display information first and immediately drop the borrow
         let previous_monitor = {
@@ -976,17 +977,8 @@ impl WindowsWindowInner {
             state.display
         }; // RefCell borrow is dropped here
         
-        log::info!("handle_display_change_msg: checking previous monitor={:?}", previous_monitor.handle);
-        
-        // CRITICAL: Call system APIs AFTER releasing all RefCell borrows
-        // WindowsDisplay::is_connected() may trigger Windows message loops via EnumDisplayMonitors
-        let is_monitor_connected = WindowsDisplay::is_connected(previous_monitor.handle);
-        
-        if is_monitor_connected {
-            log::info!("handle_display_change_msg: previous monitor still connected, other display changed");
-            // we are fine, other display changed
-            return None;
-        }
+        log::warn!("handle_display_change_msg: skipping is_connected check to avoid reentrancy deadlock");
+        log::warn!("handle_display_change_msg: assuming monitor may be disconnected, attempting window recovery");
         
         log::warn!("handle_display_change_msg: display disconnected, moving window to new monitor");
         // display disconnected
