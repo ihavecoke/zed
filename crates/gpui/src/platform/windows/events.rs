@@ -978,7 +978,11 @@ impl WindowsWindowInner {
         
         log::info!("handle_display_change_msg: checking previous monitor={:?}", previous_monitor.handle);
         
-        if WindowsDisplay::is_connected(previous_monitor.handle) {
+        // CRITICAL: Call system APIs AFTER releasing all RefCell borrows
+        // WindowsDisplay::is_connected() may trigger Windows message loops via EnumDisplayMonitors
+        let is_monitor_connected = WindowsDisplay::is_connected(previous_monitor.handle);
+        
+        if is_monitor_connected {
             log::info!("handle_display_change_msg: previous monitor still connected, other display changed");
             // we are fine, other display changed
             return None;
