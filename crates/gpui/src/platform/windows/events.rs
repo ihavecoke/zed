@@ -103,7 +103,18 @@ impl WindowsWindowInner {
             WM_INPUTLANGCHANGE => self.handle_input_language_changed(),
             WM_SHOWWINDOW => self.handle_window_visibility_changed(handle, wparam),
             WM_GPUI_CURSOR_STYLE_CHANGED => self.handle_cursor_changed(lparam),
-            WM_GPUI_FORCE_UPDATE_WINDOW => self.draw_window(handle, true),
+            WM_GPUI_FORCE_UPDATE_WINDOW => {
+                println!("[{}] {:?} WM_GPUI_FORCE_UPDATE_WINDOW -> calling draw_window(handle={:?}, force_render=true)", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id(),
+                    handle);
+                let result = self.draw_window(handle, true);
+                println!("[{}] {:?} WM_GPUI_FORCE_UPDATE_WINDOW -> draw_window returned {:?}", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id(),
+                    result);
+                result
+            },
             _ => None,
         };
         if let Some(n) = handled {
@@ -246,7 +257,16 @@ impl WindowsWindowInner {
     }
 
     fn handle_paint_msg(&self, handle: HWND) -> Option<isize> {
-        self.draw_window(handle, false)
+        println!("[{}] {:?} handle_paint_msg -> entering with handle={:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            handle);
+        let result = self.draw_window(handle, false);
+        println!("[{}] {:?} handle_paint_msg -> draw_window returned {:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            result);
+        result
     }
 
     fn handle_close_msg(&self) -> Option<isize> {
@@ -1161,14 +1181,32 @@ impl WindowsWindowInner {
     }
 
     fn handle_window_visibility_changed(&self, handle: HWND, wparam: WPARAM) -> Option<isize> {
+        println!("[{}] {:?} handle_window_visibility_changed -> entering with handle={:?}, wparam={:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            handle, wparam.0);
         if wparam.0 == 1 {
+            println!("[{}] {:?} handle_window_visibility_changed -> calling draw_window(handle={:?}, force_render=false)", 
+                std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                std::thread::current().id(),
+                handle);
             self.draw_window(handle, false);
         }
+        println!("[{}] {:?} handle_window_visibility_changed -> returning None", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id());
         None
     }
 
     fn handle_device_change_msg(&self, handle: HWND, wparam: WPARAM) -> Option<isize> {
+        println!("[{}] {:?} handle_device_change_msg -> entering with handle={:?}, wparam={:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            handle, wparam.0);
         if wparam.0 == DBT_DEVNODES_CHANGED as usize {
+            println!("[{}] {:?} handle_device_change_msg -> DBT_DEVNODES_CHANGED detected", 
+                std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                std::thread::current().id());
             // The reason for sending this message is to actually trigger a redraw of the window.
             unsafe {
                 PostMessageW(
@@ -1182,22 +1220,97 @@ impl WindowsWindowInner {
             // If the GPU device is lost, this redraw will take care of recreating the device context.
             // The WM_GPUI_FORCE_UPDATE_WINDOW message will take care of redrawing the window, after
             // the device context has been recreated.
-            self.draw_window(handle, true)
+            println!("[{}] {:?} handle_device_change_msg -> calling draw_window(handle={:?}, force_render=true)", 
+                std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                std::thread::current().id(),
+                handle);
+            let result = self.draw_window(handle, true);
+            println!("[{}] {:?} handle_device_change_msg -> draw_window returned {:?}", 
+                std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                std::thread::current().id(),
+                result);
+            result
         } else {
             // Other device change messages are not handled.
+            println!("[{}] {:?} handle_device_change_msg -> other device change, returning None", 
+                std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                std::thread::current().id());
             None
         }
     }
 
     #[inline]
     fn draw_window(&self, handle: HWND, force_render: bool) -> Option<isize> {
-        let mut request_frame = self.state.borrow_mut().callbacks.request_frame.take()?;
+        println!("[{}] {:?} draw_window -> entering with handle={:?}, force_render={:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            handle, force_render);
+        
+        println!("[{}] {:?} draw_window -> attempting to borrow_mut self.state", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id());
+        
+        let mut request_frame = match self.state.try_borrow_mut() {
+            Ok(mut state) => {
+                println!("[{}] {:?} draw_window -> successfully borrowed self.state", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id());
+                let callback = state.callbacks.request_frame.take();
+                println!("[{}] {:?} draw_window -> extracted request_frame callback: {:?}", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id(),
+                    callback.is_some());
+                callback
+            },
+            Err(e) => {
+                println!("[{}] {:?} draw_window -> ERROR: failed to borrow self.state: {:?}", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id(),
+                    e);
+                return None;
+            }
+        }?;
+        
+        println!("[{}] {:?} draw_window -> calling request_frame with require_presentation=false, force_render={:?}", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id(),
+            force_render);
+        
         request_frame(RequestFrameOptions {
             require_presentation: false,
             force_render,
         });
-        self.state.borrow_mut().callbacks.request_frame = Some(request_frame);
+        
+        println!("[{}] {:?} draw_window -> request_frame completed, attempting to restore callback", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id());
+        
+        match self.state.try_borrow_mut() {
+            Ok(mut state) => {
+                state.callbacks.request_frame = Some(request_frame);
+                println!("[{}] {:?} draw_window -> successfully restored request_frame callback", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id());
+            },
+            Err(e) => {
+                println!("[{}] {:?} draw_window -> ERROR: failed to restore request_frame callback: {:?}", 
+                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+                    std::thread::current().id(),
+                    e);
+                return None;
+            }
+        }
+        
+        println!("[{}] {:?} draw_window -> calling ValidateRect", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id());
+        
         unsafe { ValidateRect(Some(handle), None).ok().log_err() };
+        
+        println!("[{}] {:?} draw_window -> returning Some(0)", 
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
+            std::thread::current().id());
+        
         Some(0)
     }
 
