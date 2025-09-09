@@ -54,6 +54,7 @@ pub struct WindowsWindowState {
     pub system_settings: WindowsSystemSettings,
     pub current_cursor: Option<HCURSOR>,
     pub nc_button_pressed: Option<u32>,
+    pub in_draw_window: bool,
 
     pub display: WindowsDisplay,
     fullscreen: Option<StyleAndBounds>,
@@ -119,8 +120,10 @@ impl WindowsWindowState {
         let nc_button_pressed = None;
         let fullscreen = None;
         let initial_placement = None;
+        let in_draw_window = false;
 
         Ok(Self {
+            in_draw_window,
             origin,
             logical_size,
             fullscreen_restore_bounds,
