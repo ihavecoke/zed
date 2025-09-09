@@ -1241,76 +1241,13 @@ impl WindowsWindowInner {
 
     #[inline]
     fn draw_window(&self, handle: HWND, force_render: bool) -> Option<isize> {
-        println!("[{}] {:?} draw_window -> entering with handle={:?}, force_render={:?}", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id(),
-            handle, force_render);
-        
-        println!("[{}] {:?} draw_window -> attempting to borrow_mut self.state", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id());
-        
-        let mut request_frame = match self.state.try_borrow_mut() {
-            Ok(mut state) => {
-                println!("[{}] {:?} draw_window -> successfully borrowed self.state", 
-                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-                    std::thread::current().id());
-                let callback = state.callbacks.request_frame.take();
-                println!("[{}] {:?} draw_window -> extracted request_frame callback: {:?}", 
-                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-                    std::thread::current().id(),
-                    callback.is_some());
-                callback
-            },
-            Err(e) => {
-                println!("[{}] {:?} draw_window -> ERROR: failed to borrow self.state: {:?}", 
-                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-                    std::thread::current().id(),
-                    e);
-                return None;
-            }
-        }?;
-        
-        println!("[{}] {:?} draw_window -> calling request_frame with require_presentation=false, force_render={:?}", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id(),
-            force_render);
-        
+        let mut request_frame = self.state.borrow_mut().callbacks.request_frame.take()?;
         request_frame(RequestFrameOptions {
             require_presentation: false,
             force_render,
         });
-        
-        println!("[{}] {:?} draw_window -> request_frame completed, attempting to restore callback", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id());
-        
-        match self.state.try_borrow_mut() {
-            Ok(mut state) => {
-                state.callbacks.request_frame = Some(request_frame);
-                println!("[{}] {:?} draw_window -> successfully restored request_frame callback", 
-                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-                    std::thread::current().id());
-            },
-            Err(e) => {
-                println!("[{}] {:?} draw_window -> ERROR: failed to restore request_frame callback: {:?}", 
-                    std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-                    std::thread::current().id(),
-                    e);
-                return None;
-            }
-        }
-        
-        println!("[{}] {:?} draw_window -> calling ValidateRect", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id());
-        
+        self.state.borrow_mut().callbacks.request_frame = Some(request_frame);
         unsafe { ValidateRect(Some(handle), None).ok().log_err() };
-        
-        println!("[{}] {:?} draw_window -> returning Some(0)", 
-            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_millis(),
-            std::thread::current().id());
-        
         Some(0)
     }
 
