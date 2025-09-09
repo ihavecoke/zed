@@ -1178,20 +1178,20 @@ impl WindowsWindowInner {
 
     #[inline]
     fn draw_window(&self, handle: HWND, force_render: bool) -> Option<isize> {
-        // {
-        //     let state = self.state.borrow();
-        //     if state.in_draw_window {
-        //         println!("draw_window: detected reentrant call, skipping");
-        //         return Some(0);
-        //     }
-        // }
+        {
+            let state = self.state.borrow();
+            if state.in_draw_window {
+                println!("draw_window: detected reentrant call, skippin111g");
+                return Some(0);
+            }
+        }
 
-        // {
-        //     let mut state = self.state.borrow_mut();
-        //     state.in_draw_window = true;
-        // }
+        {
+            let mut state = self.state.borrow_mut();
+            state.in_draw_window = true;
+        }
 
-        // let result = {
+        let result = {
             let mut request_frame = self.state.borrow_mut().callbacks.request_frame.take()?;
             request_frame(RequestFrameOptions {
                 require_presentation: false,
@@ -1200,14 +1200,14 @@ impl WindowsWindowInner {
             self.state.borrow_mut().callbacks.request_frame = Some(request_frame);
             unsafe { ValidateRect(Some(handle), None).ok().log_err() };
             Some(0)
-        // };
+        };
 
-        // {
-        //     let mut state = self.state.borrow_mut();
-        //     state.in_draw_window = false;
-        // }
+        {
+            let mut state = self.state.borrow_mut();
+            state.in_draw_window = false;
+        }
 
-        // result
+        result
     }
 
     #[inline]
