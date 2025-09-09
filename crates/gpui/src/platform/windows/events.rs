@@ -25,6 +25,7 @@ pub(crate) const WM_GPUI_TASK_DISPATCHED_ON_MAIN_THREAD: u32 = WM_USER + 3;
 pub(crate) const WM_GPUI_DOCK_MENU_ACTION: u32 = WM_USER + 4;
 pub(crate) const WM_GPUI_FORCE_UPDATE_WINDOW: u32 = WM_USER + 5;
 pub(crate) const WM_GPUI_KEYBOARD_LAYOUT_CHANGED: u32 = WM_USER + 6;
+pub(crate) const WM_GPUI_DISPLAY_CHANGE_DELAYED: u32 = WM_USER + 7;
 
 const SIZE_MOVE_LOOP_TIMER_ID: usize = 1;
 const AUTO_HIDE_TASKBAR_THICKNESS_PX: i32 = 1;
@@ -49,7 +50,8 @@ impl WindowsWindowInner {
             WM_TIMER => self.handle_timer_msg(handle, wparam),
             WM_NCCALCSIZE => self.handle_calc_client_size(handle, wparam, lparam),
             WM_DPICHANGED => self.handle_dpi_changed_msg(handle, wparam, lparam),
-            WM_DISPLAYCHANGE => self.handle_display_change_msg(handle),
+            WM_DISPLAYCHANGE => self.handle_display_change_msg_delayed(handle),
+            WM_GPUI_DISPLAY_CHANGE_DELAYED => self.handle_display_change_delayed(handle),
             WM_NCHITTEST => self.handle_hit_test_msg(handle, msg, wparam, lparam),
             WM_PAINT => self.handle_paint_msg(handle),
             WM_CLOSE => self.handle_close_msg(),
@@ -801,6 +803,169 @@ impl WindowsWindowInner {
         Some(0)
     }
 
+    /// Handle WM_DISPLAYCHANGE with delayed processing to avoid reentrancy issues
+    fn handle_display_change_msg_delayed(&self, handle: HWND) -> Option<isize> {
+        log::debug!("WM_DISPLAYCHANGE received, posting delayed message to avoid reentrancy");
+        
+        // Post a delayed message to handle the actual display change processing
+        // This avoids potential deadlocks from calling EnumDisplayMonitors during message processing
+        unsafe {
+            PostMessageW(
+                Some(handle),
+                WM_GPUI_DISPLAY_CHANGE_DELAYED,
+                WPARAM(0),
+                LPARAM(0),
+            )
+            .log_err();
+        }
+        
+        // Return immediately to avoid blocking the message loop
+        Some(0)
+    }
+
+    /// Handle the actual display change processing in a delayed manner
+    fn handle_display_change_delayed(&self, handle: HWND) -> Option<isize> {
+        log::debug!("WM_GPUI_DISPLAY_CHANGE_DELAYED received, starting actual processing");
+        let start_time = std::time::Instant::now();
+        
+        // NOTE:
+        // Even the `lParam` holds the resolution of the screen, we just ignore it.
+        // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
+        // are handled there.
+        // So we only care about if monitor is disconnected.
+        log::debug!("Getting previous monitor info");
+        let previous_monitor = self.state.borrow().display;
+        
+        log::debug!("Checking if monitor is still connected");
+        let is_connected_start = std::time::Instant::now();
+        if WindowsDisplay::is_connected(previous_monitor.handle) {
+            let elapsed = is_connected_start.elapsed();
+            log::debug!("Monitor still connected, is_connected took {:?}", elapsed);
+            if elapsed > std::time::Duration::from_millis(500) {
+                log::warn!("Monitor connectivity check took unexpectedly long: {:?}", elapsed);
+            }
+            return None;
+        }
+        let is_connected_elapsed = is_connected_start.elapsed();
+        log::debug!("Monitor disconnected detected, is_connected took {:?}", is_connected_elapsed);
+        
+        // display disconnected
+        // in this case, the OS will move our window to another monitor, and minimize it.
+        // we deminimize the window and query the monitor after moving
+        log::debug!("Showing window after monitor disconnect");
+        let show_window_start = std::time::Instant::now();
+        unsafe {
+            let _ = ShowWindow(handle, SW_SHOWNORMAL);
+        };
+        let show_window_elapsed = show_window_start.elapsed();
+        log::debug!("ShowWindow completed in {:?}", show_window_elapsed);
+        if show_window_elapsed > std::time::Duration::from_millis(1000) {
+            log::warn!("ShowWindow took unexpectedly long: {:?}", show_window_elapsed);
+        }
+        
+        log::debug!("Getting new monitor handle");
+        let monitor_start = std::time::Instant::now();
+        let new_monitor = unsafe { MonitorFromWindow(handle, MONITOR_DEFAULTTONULL) };
+        let monitor_elapsed = monitor_start.elapsed();
+        log::debug!("MonitorFromWindow completed in {:?}", monitor_elapsed);
+        if monitor_elapsed > std::time::Duration::from_millis(1000) {
+            log::warn!("MonitorFromWindow took unexpectedly long: {:?}", monitor_elapsed);
+        }
+        
+        // all monitors disconnected
+        if new_monitor.is_invalid() {
+            log::error!("No monitor detected after display change!");
+            return None;
+        }
+        
+        log::debug!("Creating new display object for monitor: {:?}", new_monitor);
+        let display_start = std::time::Instant::now();
+        let new_display = WindowsDisplay::new_with_handle(new_monitor);
+        let display_elapsed = display_start.elapsed();
+        log::debug!("WindowsDisplay::new_with_handle completed in {:?}", display_elapsed);
+        if display_elapsed > std::time::Duration::from_millis(1000) {
+            log::warn!("WindowsDisplay creation took unexpectedly long: {:?}", display_elapsed);
+        }
+        
+        log::debug!("Updating window state with new display");
+        self.state.borrow_mut().display = new_display;
+        
+        let total_elapsed = start_time.elapsed();
+        log::debug!("Delayed WM_DISPLAYCHANGE processing completed in {:?}", total_elapsed);
+        
+        if total_elapsed > std::time::Duration::from_millis(5000) {
+            log::error!("Delayed display change processing took dangerously long: {:?}", total_elapsed);
+        } else if total_elapsed > std::time::Duration::from_millis(2000) {
+            log::warn!("Delayed display change processing took longer than expected: {:?}", total_elapsed);
+        }
+        
+        Some(0)
+    }
+
+    fn handle_display_change_msg(&self, handle: HWND) -> Option<isize> {
+        log::info!("WM_DISPLAYCHANGE received, starting processing");
+        let start_time = std::time::Instant::now();
+        
+        // NOTE:
+        // Even the `lParam` holds the resolution of the screen, we just ignore it.
+        // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
+        // are handled there.
+        // So we only care about if monitor is disconnected.
+        log::info!("Getting previous monitor info");
+        let previous_monitor = self.state.borrow().display;
+        
+        log::info!("Checking if monitor is still connected");
+        let is_connected_start = std::time::Instant::now();
+        if WindowsDisplay::is_connected(previous_monitor.handle) {
+            let elapsed = is_connected_start.elapsed();
+            log::info!("Monitor still connected, is_connected took {:?}", elapsed);
+            // we are fine, other display changed
+            return None;
+        }
+        let is_connected_elapsed = is_connected_start.elapsed();
+        log::info!("Monitor disconnected detected, is_connected took {:?}", is_connected_elapsed);
+        
+        // display disconnected
+        // in this case, the OS will move our window to another monitor, and minimize it.
+        // we deminimize the window and query the monitor after moving
+        log::info!("Showing window");
+        let show_window_start = std::time::Instant::now();
+        unsafe {
+            let _ = ShowWindow(handle, SW_SHOWNORMAL);
+        };
+        let show_window_elapsed = show_window_start.elapsed();
+        log::info!("ShowWindow completed in {:?}", show_window_elapsed);
+        
+        log::info!("Getting new monitor");
+        let monitor_start = std::time::Instant::now();
+        let new_monitor = unsafe { MonitorFromWindow(handle, MONITOR_DEFAULTTONULL) };
+        let monitor_elapsed = monitor_start.elapsed();
+        log::info!("MonitorFromWindow completed in {:?}", monitor_elapsed);
+        
+        // all monitors disconnected
+        if new_monitor.is_invalid() {
+            log::error!("No monitor detected!");
+            return None;
+        }
+        
+        log::info!("Creating new display object");
+        let display_start = std::time::Instant::now();
+        let new_display = WindowsDisplay::new_with_handle(new_monitor);
+        let display_elapsed = display_start.elapsed();
+        log::info!("WindowsDisplay::new_with_handle completed in {:?}", display_elapsed);
+        
+        self.state.borrow_mut().display = new_display;
+        
+        let total_elapsed = start_time.elapsed();
+        log::info!("WM_DISPLAYCHANGE processing completed in {:?}", total_elapsed);
+        
+        if total_elapsed > std::time::Duration::from_millis(5000) {
+            log::error!("WM_DISPLAYCHANGE processing took dangerously long: {:?}", total_elapsed);
+        }
+        
+        Some(0)
+    }
+
     /// The following conditions will trigger this event:
     /// 1. The monitor on which the window is located goes offline or changes resolution.
     /// 2. Another monitor goes offline, is plugged in, or changes resolution.
@@ -811,30 +976,66 @@ impl WindowsWindowInner {
     /// For example, in the case of condition 2, where the monitor on which the window is
     /// located has actually changed nothing, it will still receive this event.
     fn handle_display_change_msg(&self, handle: HWND) -> Option<isize> {
+        log::info!("WM_DISPLAYCHANGE received, starting processing");
+        let start_time = std::time::Instant::now();
+        
         // NOTE:
         // Even the `lParam` holds the resolution of the screen, we just ignore it.
         // Because WM_DPICHANGED, WM_MOVE, WM_SIZE will come first, window reposition and resize
         // are handled there.
         // So we only care about if monitor is disconnected.
+        log::info!("Getting previous monitor info");
         let previous_monitor = self.state.borrow().display;
+        
+        log::info!("Checking if monitor is still connected");
+        let is_connected_start = std::time::Instant::now();
         if WindowsDisplay::is_connected(previous_monitor.handle) {
+            let elapsed = is_connected_start.elapsed();
+            log::info!("Monitor still connected, is_connected took {:?}", elapsed);
             // we are fine, other display changed
             return None;
         }
+        let is_connected_elapsed = is_connected_start.elapsed();
+        log::info!("Monitor disconnected detected, is_connected took {:?}", is_connected_elapsed);
+        
         // display disconnected
         // in this case, the OS will move our window to another monitor, and minimize it.
         // we deminimize the window and query the monitor after moving
+        log::info!("Showing window");
+        let show_window_start = std::time::Instant::now();
         unsafe {
             let _ = ShowWindow(handle, SW_SHOWNORMAL);
         };
+        let show_window_elapsed = show_window_start.elapsed();
+        log::info!("ShowWindow completed in {:?}", show_window_elapsed);
+        
+        log::info!("Getting new monitor");
+        let monitor_start = std::time::Instant::now();
         let new_monitor = unsafe { MonitorFromWindow(handle, MONITOR_DEFAULTTONULL) };
+        let monitor_elapsed = monitor_start.elapsed();
+        log::info!("MonitorFromWindow completed in {:?}", monitor_elapsed);
+        
         // all monitors disconnected
         if new_monitor.is_invalid() {
             log::error!("No monitor detected!");
             return None;
         }
+        
+        log::info!("Creating new display object");
+        let display_start = std::time::Instant::now();
         let new_display = WindowsDisplay::new_with_handle(new_monitor);
+        let display_elapsed = display_start.elapsed();
+        log::info!("WindowsDisplay::new_with_handle completed in {:?}", display_elapsed);
+        
         self.state.borrow_mut().display = new_display;
+        
+        let total_elapsed = start_time.elapsed();
+        log::info!("WM_DISPLAYCHANGE processing completed in {:?}", total_elapsed);
+        
+        if total_elapsed > std::time::Duration::from_millis(5000) {
+            log::error!("WM_DISPLAYCHANGE processing took dangerously long: {:?}", total_elapsed);
+        }
+        
         Some(0)
     }
 

@@ -174,7 +174,31 @@ impl WindowsDisplay {
 
     /// Check if this monitor is still online
     pub fn is_connected(hmonitor: HMONITOR) -> bool {
-        available_monitors().iter().contains(&hmonitor)
+        log::debug!("Checking if monitor {:?} is connected, starting available_monitors() call", hmonitor);
+        let start = std::time::Instant::now();
+        
+        // Call available_monitors() and measure timing
+        let monitors = available_monitors();
+        let elapsed = start.elapsed();
+        
+        if elapsed > std::time::Duration::from_millis(2000) {
+            log::error!("available_monitors() took too long: {:?}, this might indicate a system issue", elapsed);
+        } else if elapsed > std::time::Duration::from_millis(500) {
+            log::warn!("available_monitors() took longer than expected: {:?}", elapsed);
+        } else {
+            log::debug!("available_monitors() completed normally in {:?}", elapsed);
+        }
+        
+        let result = monitors.iter().contains(&hmonitor);
+        log::debug!("Monitor connected check result: {} for monitor {:?}, took {:?}", result, hmonitor, elapsed);
+        
+        // If the monitor is disconnected and the call took a long time, 
+        // this might indicate the remote desktop issue
+        if !result && elapsed > std::time::Duration::from_millis(1000) {
+            log::error!("Monitor {:?} disconnected and EnumDisplayMonitors took {:?} - possible remote desktop disconnect scenario", hmonitor, elapsed);
+        }
+        
+        result
     }
 
     pub fn physical_bounds(&self) -> Bounds<DevicePixels> {
@@ -197,17 +221,42 @@ impl PlatformDisplay for WindowsDisplay {
 }
 
 fn available_monitors() -> SmallVec<[HMONITOR; 4]> {
+    let start_time = std::time::Instant::now();
+    let thread_id = std::thread::current().id();
+    log::debug!("Starting EnumDisplayMonitors call on thread {:?}", thread_id);
+    
     let mut monitors: SmallVec<[HMONITOR; 4]> = SmallVec::new();
-    unsafe {
+    let enum_result = unsafe {
         EnumDisplayMonitors(
             None,
             None,
             Some(monitor_enum_proc),
             LPARAM(&mut monitors as *mut _ as _),
         )
-        .ok()
-        .log_err();
+    };
+    
+    let elapsed = start_time.elapsed();
+    
+    match enum_result {
+        Ok(_) => {
+            log::debug!("EnumDisplayMonitors completed successfully in {:?}, found {} monitors", elapsed, monitors.len());
+            
+            if elapsed > std::time::Duration::from_millis(1000) {
+                log::error!("EnumDisplayMonitors took dangerously long: {:?} - possible system issue or remote desktop disconnect", elapsed);
+            } else if elapsed > std::time::Duration::from_millis(100) {
+                log::warn!("EnumDisplayMonitors took longer than expected: {:?}", elapsed);
+            }
+            
+            // Log each monitor handle for debugging
+            for (i, monitor) in monitors.iter().enumerate() {
+                log::debug!("Monitor {}: {:?}", i, monitor);
+            }
+        }
+        Err(e) => {
+            log::error!("EnumDisplayMonitors failed in {:?} with error: {:?}", elapsed, e);
+        }
     }
+    
     monitors
 }
 
@@ -217,8 +266,10 @@ unsafe extern "system" fn monitor_enum_proc(
     _place: *mut RECT,
     data: LPARAM,
 ) -> BOOL {
+    log::debug!("monitor_enum_proc called with monitor: {:?}", hmonitor);
     let monitors = data.0 as *mut SmallVec<[HMONITOR; 4]>;
     unsafe { (*monitors).push(hmonitor) };
+    log::debug!("monitor_enum_proc added monitor {:?}, continuing enumeration", hmonitor);
     BOOL(1)
 }
 
