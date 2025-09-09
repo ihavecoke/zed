@@ -1181,7 +1181,7 @@ impl WindowsWindowInner {
         {
             let state = self.state.borrow();
             if state.in_draw_window {
-                println!("draw_window: detected reentrant call, skippin111g");
+                println!("1draw_window: detected reentrant call, skipping");
                 return None;
             }
         }
