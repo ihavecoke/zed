@@ -1178,36 +1178,27 @@ impl WindowsWindowInner {
 
     #[inline]
     fn draw_window(&self, handle: HWND, force_render: bool) -> Option<isize> {
-        {
-            let state = self.state.borrow();
-            if state.in_draw_window {
-                println!("1draw_window: detected reentrant call, skipping");
-                return None;
+        // let mut request_frame = self.state.borrow_mut().callbacks.request_frame.take()?;
+        let mut request_frame = match self.state.try_borrow_mut() {
+            Ok(mut state) => state.callbacks.request_frame.take()?,
+            Err(_) => {
+                println!("2draw_window: detected reentrant call, skipping");
+                return Some(0);
             }
-        }
-
-        {
-            let mut state = self.state.borrow_mut();
-            state.in_draw_window = true;
-        }
-
-        let result = {
-            let mut request_frame = self.state.borrow_mut().callbacks.request_frame.take()?;
-            request_frame(RequestFrameOptions {
-                require_presentation: false,
-                force_render,
-            });
-            self.state.borrow_mut().callbacks.request_frame = Some(request_frame);
-            unsafe { ValidateRect(Some(handle), None).ok().log_err() };
-            Some(0)
         };
 
-        {
-            let mut state = self.state.borrow_mut();
-            state.in_draw_window = false;
+        request_frame(RequestFrameOptions {
+            require_presentation: false,
+            force_render,
+        });
+        // self.state.borrow_mut().callbacks.request_frame = Some(request_frame);
+
+        if let Ok(mut state) = self.state.try_borrow_mut() {
+            state.callbacks.request_frame = Some(request_frame);
         }
 
-        result
+        unsafe { ValidateRect(Some(handle), None).ok().log_err() };
+        Some(0)
     }
 
     #[inline]
